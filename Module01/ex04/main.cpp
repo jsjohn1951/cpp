@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:58:19 by wismith           #+#    #+#             */
-/*   Updated: 2022/09/09 20:36:10 by wismith          ###   ########.fr       */
+/*   Updated: 2022/10/01 22:36:10 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ void	creation(std::string file, std::string s1, std::string s2)
 int	main(int argc, char **argv)
 {
 	if (argc != 4)
+	{
+		std::cout << "argc argv: More arguments required" << std::endl;
 		return (1);
+	}
 	header(argv[1], argv[2], argv[3]);
 	creation(argv[1], argv[2], argv[3]);
 	return (0);
