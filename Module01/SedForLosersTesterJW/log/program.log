@@ -1,7 +1,9 @@
+make: Entering directory '/home/vscode/src/ex04'
 rm -rf Objects
-rm -f sedForLosers
+rm -f replace
 clang++ -Wall -Werror -Wextra -std=c++98 -c main.cpp -o Objects/main.o
-clang++ -Wall -Werror -Wextra -std=c++98 Objects/main.o -o sedForLosers
+clang++ -Wall -Werror -Wextra -std=c++98 Objects/main.o -o replace
+make: Leaving directory '/home/vscode/src/ex04'
 
 	*file name:	'[32mtest1[0m'
 	string s1:	'[31mhello[0m'
@@ -16,5 +18,7 @@ clang++ -Wall -Werror -Wextra -std=c++98 Objects/main.o -o sedForLosers
 
 	[32mgenerating new file...[0m
 
+make: Entering directory '/home/vscode/src/ex04'
 rm -rf Objects
-rm -f sedForLosers
+rm -f replace
+make: Leaving directory '/home/vscode/src/ex04'

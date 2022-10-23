@@ -8,9 +8,6 @@
 #	Enjoy the simple tester and conquer this project
 #
 
-printf "\nIs valgrind installed? (y/n) : "
-read varinput
-
 mkdir -p log
 printf "\n\tSed is for losers test\n\n"
 if [ -e ../ex04/sedForLosers ]
@@ -28,7 +25,7 @@ fi
 
 # test 1:
 sleep 1
-../ex04/sedForLosers test1 hello hi >> log/program.log
+../ex04/replace test1 hello hi >> log/program.log
 sleep 1
 printf "\x1B[35mtest\x1B[0m ->"
 if [ -e test1.replace ]
@@ -53,7 +50,7 @@ fi
 
 # test 2:
 sleep 1
-../ex04/sedForLosers test2 bob Jackdaniels >> log/program.log
+../ex04/replace test2 bob Jackdaniels >> log/program.log
 sleep 1
 
 if [ -e test2.replace ]
@@ -70,34 +67,6 @@ then
 	fi
 else
 	printf " [\x1B[31mfail\x1B[0m]"
-fi
-rm -f test2.replace
-
-# test 3:
-if [ "$varinput" == "y" ]
-then
-	sleep 1
-	valgrind --leak-check=full ../ex04/sedForLosers test2 bob Jackdaniels >> log/program.log
-	sleep 1
-	if [ -e test2.replace ]
-	then
-		myVar="$(cat test2 | grep "bob" -o | wc -l )"
-		myVar2="$(cat test2.replace | grep "Jackdaniels" -o | wc -l )"
-		myVar3="$(cat test2 | wc -w)"
-		myVar4="$(cat test2.replace | wc -w)"
-		if [ "$myVar" = "$myVar2" ] && [ "$myVar3" = "$myVar4" ]
-		then
-			printf " [\x1B[32mok\x1B[0m]"
-		else
-			printf " [\x1B[31mfail\x1B[0m]"
-			fi
-	else
-		printf " [\x1B[31mfail\x1B[0m]"
-	fi
-else
-	sleep 2
-	printf " [\x1B[31mimpossible to check for memleaks\x1B[0m]"
-	sleep 2
 fi
 
 printf "\n\n"

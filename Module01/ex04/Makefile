@@ -6,11 +6,11 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/19 22:20:51 by wismith           #+#    #+#              #
-#    Updated: 2022/09/09 15:59:17 by wismith          ###   ########.fr        #
+#    Updated: 2022/10/22 23:04:43 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = sedForLosers
+NAME = replace
 
 SRCS = main\
 

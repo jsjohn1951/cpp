@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:58:19 by wismith           #+#    #+#             */
-/*   Updated: 2022/10/01 22:36:10 by wismith          ###   ########.fr       */
+/*   Updated: 2022/10/23 00:12:20 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,26 @@ void	header(std::string file, std::string s1, std::string s2)
 	std::cout << "\n\t\x1B[32mgenerating new file...\x1B[0m" << std::endl << std::endl;
 }
 
-void	creation(std::string file, std::string s1, std::string s2)
+void	creation(char *file, std::string s1, std::string s2)
 {
-	std::string		save_name;
-	std::ifstream	file1;
-	std::ofstream	file2;
+	std::ifstream	file1(file);
+	std::ofstream	file2(std::string(file).append(".replace").c_str(), std::ofstream::out);
 	size_t			pos;
 
-	save_name = file;
-	file1.open(file);
 	if (file1)
 	{
-		file2.open(file.append(".replace"));
 		for (std::string line; getline(file1, line); )
 		{
 			while ((pos = line.find(s1)) != line.npos)
-			{
-				line.erase(pos, s1.length());
-				line.insert(pos, s2);
-			}
-			file2 << line << std::endl;
+				line.erase(pos, s1.length()).insert(pos, s2);
+			file2 << line;
+			if (!file1.eof())
+				file2 << std::endl;
 		}
-		file2.close();
 	}
 	else
-		std::cout << save_name << ": " << "No such file or directory!\n" << std::endl;
+		std::cout << file << ": " << "Cannot open file!\n" << std::endl;
+	file2.close();
 	file1.close();
 }
 
@@ -54,7 +49,7 @@ int	main(int argc, char **argv)
 {
 	if (argc != 4)
 	{
-		std::cout << "argc argv: More arguments required" << std::endl;
+		std::cout << "incorrect number of arguments" << std::endl;
 		return (1);
 	}
 	header(argv[1], argv[2], argv[3]);
