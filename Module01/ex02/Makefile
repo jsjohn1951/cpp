@@ -5,38 +5,33 @@
 #                                                     +:+ +:+         +:+      #
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/19 22:20:51 by wismith           #+#    #+#              #
-#    Updated: 2022/08/28 23:38:14 by wismith          ###   ########.fr        #
+#    Created: 2022/10/27 14:10:27 by wismith           #+#    #+#              #
+#    Updated: 2022/10/28 18:09:54 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = brain
 
-SRCS = main\
+SRCS = main.cpp \
 
-CC = clang++
 
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+OBJS = $(SRCS:.cpp=.o)
 
-OBJDIR = Objects
+CXX = c++
 
-OBJ = $(addprefix $(OBJDIR)/, $(addsuffix .o , $(SRCS)))
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-$(OBJDIR)/%.o : %.cpp
-	@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+all : $(NAME)
 
-all: $(NAME)
+$(NAME) : $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-$(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+clean :
+	rm -rf $(OBJS)
 
-clean:
-	rm -rf $(OBJDIR)
+fclean : clean
+	rm -rf $(NAME)
 
-fclean: clean
-	rm -f $(NAME)
+re : fclean all
 
-re: fclean all
-
-.PHONY: all fclean clean re
+.PHONY: all clean fclean re

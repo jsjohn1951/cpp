@@ -5,27 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/22 21:58:56 by wismith           #+#    #+#             */
-/*   Updated: 2022/08/28 23:24:05 by wismith          ###   ########.fr       */
+/*   Created: 2022/10/27 12:58:16 by wismith           #+#    #+#             */
+/*   Updated: 2022/10/27 13:52:47 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "./Zombie.hpp"
 
-void	Zombie::announce(void)
+Zombie::Zombie()
 {
-	std::cout << "\t[" << tag << "] ";
-	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << "\x1B[32m";
+	std::cout << "Constructing a new Zombie: " << "time to run!" << std::endl;
+	std::cout << "\x1B[0m";
 }
 
-void	Zombie::one_bite(std::string n, int t)
+void	Zombie::setName(std::string name, int t)
 {
-	tag = t;
-	name = n;
+	this->name = name;
+	this->tag = t;
 }
 
-Zombie::~Zombie(void)
+void	Zombie::announce()
 {
-	std::cout << "\t[" << tag << "] ";
-	std::cout << name << ": Got killed by a raider" << std::endl;
+	std::cout << "[" << this->tag << "] ";
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+Zombie::~Zombie()
+{
+	std::cout << "[" << this->tag << "] ";
+	std::cout << "\x1B[31m";
+	std::cout << "Destructing Zombie: " << this->name << ": Got killed by a raider!" << std::endl;
+	std::cout << "\x1B[0m";
 }

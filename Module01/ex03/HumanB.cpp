@@ -5,29 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/09 15:12:36 by wismith           #+#    #+#             */
-/*   Updated: 2022/09/09 15:39:12 by wismith          ###   ########.fr       */
+/*   Created: 2022/10/27 16:33:25 by wismith           #+#    #+#             */
+/*   Updated: 2022/10/28 12:42:37 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#include "./HumanB.hpp"
 
-HumanB::HumanB(std::string n)
+HumanB::HumanB(std::string n): name(n), weapon(NULL)
 {
-	name = n;
+	std::cout << "\x1B[32m";
+	std::cout << n << " born" << std::endl;
+	std:: cout << "\x1B[0m";
 }
 
 HumanB::~HumanB()
 {
-	return ;
+	std::cout << "\x1B[31m";
+	std::cout << this->name << " has died" << std::endl;
+	std:: cout << "\x1B[0m";
 }
 
-void	HumanB::setWeapon(Weapon &w)
+void	HumanB::setWeapon(Weapon &weapon)
 {
-	weapon = &w;
+	this->weapon = &weapon;
 }
 
-void	HumanB::attack()
+void	HumanB::attack(void)
 {
-	std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+	std::cout << this->name << " attacks with their "
+		<< (this->weapon ? this->weapon->getType() : "scared look on face") << std::endl;
 }

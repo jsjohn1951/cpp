@@ -6,14 +6,13 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 15:43:59 by wismith           #+#    #+#             */
-/*   Updated: 2022/08/20 23:10:33 by wismith          ###   ########.fr       */
+/*   Updated: 2022/10/25 16:07:45 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #	ifndef CONTACT_HPP
 # define CONTACT_HPP
 # include <iostream>
-# include <string>
 
 class	Contact
 {

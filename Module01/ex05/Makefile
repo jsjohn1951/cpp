@@ -5,16 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/27 12:45:50 by wismith           #+#    #+#              #
-#    Updated: 2022/10/28 18:11:31 by wismith          ###   ########.fr        #
+#    Created: 2022/10/28 15:02:00 by wismith           #+#    #+#              #
+#    Updated: 2022/10/28 15:07:53 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = zombieHorde
+NAME = Harl
 
 SRCS = main \
-	Zombie \
-	zombieHorde
+	Harl \
 
 OBJDIR = objects
 

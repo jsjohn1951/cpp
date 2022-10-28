@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 22:20:23 by wismith           #+#    #+#             */
-/*   Updated: 2022/10/25 14:49:09 by wismith          ###   ########.fr       */
+/*   Created: 2022/10/28 15:06:15 by wismith           #+#    #+#             */
+/*   Updated: 2022/10/28 16:37:19 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
+#include "./Harl.hpp"
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	else
-		for (int i = 1; argv[i]; i++)
-			for (int j = 0; argv[i][j]; j++)
-				std::cout << (char) toupper(argv[i][j]);
 	std::cout << std::endl;
+	Harl	harl;
+
+	harl.complain("debug");
+	harl.complain("info");
+	harl.complain("warning");
+	harl.complain("error");
+	harl.complain("bob");
 	return (0);
 }

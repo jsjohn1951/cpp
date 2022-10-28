@@ -5,25 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/09 14:44:25 by wismith           #+#    #+#             */
-/*   Updated: 2022/09/09 15:37:38 by wismith          ###   ########.fr       */
+/*   Created: 2022/10/27 16:18:04 by wismith           #+#    #+#             */
+/*   Updated: 2022/10/28 12:35:24 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#include "./HumanA.hpp"
 
-HumanA::HumanA(std::string n, Weapon &w)
+HumanA::HumanA(std::string name, Weapon &type): name(name), weapon(type)
 {
-	name = n;
-	weapon = &w;
+	std::cout << "\x1B[32m";
+	std::cout << name << " born" << std::endl;
+	std:: cout << "\x1B[0m";
 }
 
 HumanA::~HumanA()
 {
-	return ;
+	std::cout << "\x1B[31m";
+	std::cout << this->name << " has died" << std::endl;
+	std:: cout << "\x1B[0m";
 }
 
-void	HumanA::attack()
+void	HumanA::attack(void)
 {
-	std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+	std::cout << this->name << " attacks with their " << this->weapon.getType() << std::endl;
 }

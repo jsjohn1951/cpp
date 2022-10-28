@@ -6,12 +6,11 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:16:34 by wismith           #+#    #+#             */
-/*   Updated: 2022/10/22 15:44:41 by wismith          ###   ########.fr       */
+/*   Updated: 2022/10/25 16:07:29 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../classes/PhoneBook.hpp"
-#include <string>
 
 void	PhoneBook::header(void)
 {
@@ -26,43 +25,37 @@ void	PhoneBook::header(void)
 
 void	PhoneBook::search(void)
 {
-	int			i;
-	std::string	input;
+	int			input;
+	char		in;
 
-	i = 0;
 	this->header();
 	std::cout << std::endl << "Search index:\t";
-	std::cin >> input;
+	std::cin >> in;
 	std::cout << "\e[1;1H\e[2J";
-	if (input.size() == 1 && input[0] >= '1' && input[0] <= '9')
-		i = input[0] - '0';
-	if (!i || i > this->num)
+	input = in - '0';
+	if (!input || input > this->num)
 		std::cout << "Can't search for someone who doesn't exist!" << std::endl;
 	else
-			this->c_obj[i - 1].display_person();
+			this->c_obj[input - 1].display_person();
 }
 
 int	PhoneBook::set_num(int x)
 {
 	this->num = x;
-	return (this->num);	
+	return (this->num);
 }
 
-void	PhoneBook::add_contact(int *num)
+void	PhoneBook::add_contact()
 {
 	static int	nu;
-	
-	if (*num < 8)
-	{
-		this->c_obj[*num].add_();
-		set_num(++*num);
-	}
-	else
-	{
-		this->c_obj[nu].add_();
-		nu++;
-		if (nu == 8)
-			nu = 0;
-	}
+	static int	max;
+
+	this->c_obj[nu].add_();
+	nu++;
+	max++;
+	if (max <= 8)
+		set_num(nu);
+	if (nu == 8)
+		nu = 0;
 	return ;
 }

@@ -5,32 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 16:29:00 by wismith           #+#    #+#             */
-/*   Updated: 2022/09/09 15:32:16 by wismith          ###   ########.fr       */
+/*   Created: 2022/10/27 15:39:22 by wismith           #+#    #+#             */
+/*   Updated: 2022/10/28 12:44:10 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+#include "./Weapon.hpp"
+# include "./HumanA.hpp"
+# include "./HumanB.hpp"
 
 int main()
 {
+	std::cout << std::endl << "HumanA: " << std::endl << std::endl;
 	{
 		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
+		HumanA bob("Muttley", club);
 		bob.attack();
 		club.setType("some other type of club");
 		bob.attack();
 	}
+	std::cout << std::endl << "HumanB: " << std::endl << std::endl;
 	{
 		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
+		HumanB jim("Dastardly");
 		jim.setWeapon(club);
 		jim.attack();
 		club.setType("some other type of club");
 		jim.attack();
 	}
+	std::cout << std::endl << "HumanB: " << std::endl << std::endl;
+	{
+		HumanB jim("Jim");
+		jim.attack();
+	}
+	std::cout << std::endl;
 	return 0;
 }
+

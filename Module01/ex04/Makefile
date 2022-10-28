@@ -6,7 +6,7 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/19 22:20:51 by wismith           #+#    #+#              #
-#    Updated: 2022/10/22 23:04:43 by wismith          ###   ########.fr        #
+#    Updated: 2022/10/28 12:49:01 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = replace
 
 SRCS = main\
 
-CC = clang++
+CC = c++
 
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 

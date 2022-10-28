@@ -6,7 +6,7 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/19 22:20:51 by wismith           #+#    #+#              #
-#    Updated: 2022/08/21 21:14:49 by wismith          ###   ########.fr        #
+#    Updated: 2022/10/25 16:45:38 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS = main\
 	assets/PhoneBook\
 	assets/tools\
 
-CC = clang++
+CC = c++
 
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 

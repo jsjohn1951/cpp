@@ -5,19 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 12:44:19 by wismith           #+#    #+#             */
-/*   Updated: 2022/08/28 23:15:59 by wismith          ###   ########.fr       */
+/*   Created: 2022/10/27 13:04:20 by wismith           #+#    #+#             */
+/*   Updated: 2022/10/27 13:50:47 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "./Zombie.hpp"
 
-Zombie* zombieHorde( int N, std::string name )
+Zombie	*zombieHorde(int N, std::string name)
 {
-	Zombie	*objs;
+	Zombie	*aHorde;
 
-	objs = new Zombie[N];
+	aHorde = new Zombie[N];
 	for (int i = 0; i < N; i++)
-		objs[i].one_bite(name, i);
-	return (objs);
+		aHorde[i].setName(name, i + 1);
+	return (aHorde);
 }

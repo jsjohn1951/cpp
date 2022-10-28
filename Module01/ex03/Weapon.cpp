@@ -5,25 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/09 14:36:20 by wismith           #+#    #+#             */
-/*   Updated: 2022/09/09 15:31:03 by wismith          ###   ########.fr       */
+/*   Created: 2022/10/27 15:53:30 by wismith           #+#    #+#             */
+/*   Updated: 2022/10/28 12:33:22 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "./Weapon.hpp"
 
-Weapon::Weapon(std::string w)
+Weapon::Weapon(std::string type)
 {
-	type = w;
+	this->setType(type);
+	std::cout << "Constructing " << this->type << std::endl;
+}
+
+Weapon::~Weapon()
+{
+	std::cout << "Destructing " << this->type << std::endl;
 }
 
 const std::string	&Weapon::getType()
 {
-	const std::string &ref = type;
+	const std::string	&ref = this->type;
 	return (ref);
 }
 
-void	Weapon::setType(std::string t)
+void	Weapon::setType(std::string type)
 {
-	type = t;
+	this->type = type;
 }

@@ -6,7 +6,7 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/19 22:20:51 by wismith           #+#    #+#              #
-#    Updated: 2022/08/21 21:14:35 by wismith          ###   ########.fr        #
+#    Updated: 2022/10/25 16:45:43 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = Account
 SRCS = tests.cpp\
 	Account.cpp\
 
-CC = clang++
+CC = c++
 
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 

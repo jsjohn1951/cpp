@@ -5,41 +5,41 @@
 #                                                     +:+ +:+         +:+      #
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/19 22:20:51 by wismith           #+#    #+#              #
-#    Updated: 2022/09/08 16:28:43 by wismith          ###   ########.fr        #
+#    Created: 2022/10/27 16:44:58 by wismith           #+#    #+#              #
+#    Updated: 2022/10/28 18:09:12 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = unnecessaryViolence
+NAME = violence
 
-SRCS = main\
-	HumanA\
-	HumanB\
-	Weapon\
+SRCS = main \
+	Weapon \
+	HumanA \
+	HumanB \
 
-CC = clang++
+OBJDIR = objects
 
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+OBJS = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(SRCS)))
 
-OBJDIR = Objects
+CXX = c++
 
-OBJ = $(addprefix $(OBJDIR)/, $(addsuffix .o , $(SRCS)))
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 $(OBJDIR)/%.o : %.cpp
 	@mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-all: $(NAME)
+all : $(NAME)
 
-$(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+$(NAME) : $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-clean:
+clean :
 	rm -rf $(OBJDIR)
 
-fclean: clean
-	rm -f $(NAME)
+fclean : clean
+	rm -rf $(NAME)
 
-re: fclean all
+re : fclean all
 
-.PHONY: all fclean clean re
+.PHONY: all clean fclean re
