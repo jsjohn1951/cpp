@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:58:19 by wismith           #+#    #+#             */
-/*   Updated: 2022/10/28 18:05:14 by wismith          ###   ########.fr       */
+/*   Updated: 2022/10/29 22:11:03 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,35 +37,45 @@ int	errmsg(int i, std::string str)
 	return (1);
 }
 
-int	creation(std::string file, std::string s1, std::string s2)
+int	createReplace(std::string sav, std::string file, std::string s1, std::string s2)
 {
-	std::string		prevFileName = file;
-	std::ifstream	file1(file.c_str());
-	size_t			pos;
+	std::ofstream	outfile(file.append(".replace").c_str());
+	size_t			pos = -1;
 
-	if (file1)
+	if (outfile.good())
 	{
-		header(file, s1, s2);
-		std::ofstream	file2(file.append(".replace").c_str(), std::ofstream::out);
-		if (!file2)
+		while ((pos = sav.find(s1, pos + 1)) != sav.npos)
 		{
-			file1.close();
-			return (errmsg(4, ""));
+			sav.erase(pos, s1.length()).insert(pos, s2);
+			pos += s2.length() - 1;
 		}
-		for (std::string line; getline(file1, line); )
-		{
-			while ((pos = line.find(s1)) != line.npos)
-				line.erase(pos, s1.length()).insert(pos, s2);
-			file2 << line;
-			if (!file1.eof())
-				file2 << std::endl;
-		}
-		file1.close();
-		file2.close();
+		outfile << sav;
 	}
 	else
-		return (errmsg(4, prevFileName));
+		return (errmsg(3, ""));
+	outfile.close();
+	header(file, s1, s2);
 	return (0);
+}
+
+int	creation(std::string file, std::string s1, std::string s2)
+{
+	std::ifstream	infile(file.c_str());
+	std::string		sav;
+
+	if (infile.good())
+	{
+		for (std::string line; getline(infile, line);)
+		{
+			sav += line;
+			if (!infile.eof())
+				sav += "\n";
+		}
+	}
+	else
+		return (errmsg(4, file));
+	infile.close();
+	return (createReplace(sav, file, s1, s2));
 }
 
 int	main(int argc, char **argv)
@@ -74,5 +84,6 @@ int	main(int argc, char **argv)
 		return (errmsg(1, ""));
 	if (!std::string(argv[1]).length() || !std::string(argv[2]).length())
 		return (errmsg(2, ""));
-	return (creation(std::string(argv[1]), std::string(argv[2]), std::string(argv[3])));
+	return (creation(std::string(argv[1]),
+		std::string(argv[2]), std::string(argv[3])));
 }
