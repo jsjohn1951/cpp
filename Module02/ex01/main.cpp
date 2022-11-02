@@ -5,49 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 12:52:08 by wismith           #+#    #+#             */
-/*   Updated: 2022/10/30 19:12:29 by wismith          ###   ########.fr       */
+/*   Created: 2022/10/29 22:40:57 by wismith           #+#    #+#             */
+/*   Updated: 2022/11/01 00:18:34 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Zombie.hpp"
-
-void	test1(void)
-{
-	Zombie	*aHorde;
-	int		n;
-
-	n = 4;
-	aHorde = zombieHorde(n, "was Bob");
-	std::cout << std::endl;
-	if (aHorde)
-		for (int i = 0; i < n; i++)
-			aHorde[i].announce();
-	std::cout << std::endl;
-	delete [] aHorde;
-}
-
-void	test2(void)
-{
-	Zombie	*aHorde;
-	int		n;
-
-	n = -1;
-	aHorde = zombieHorde(n, "was Billy");
-	std::cout << std::endl;
-	if (aHorde)
-		for (int i = 0; i < n; i++)
-			aHorde[i].announce();
-	std::cout << std::endl;
-	delete [] aHorde;
-}
+#include "./Fixed.hpp"
 
 int	main(void)
 {
-	std::cout << std::endl << "test 1:" << std::endl << std::endl;
-	test1();
-	std::cout << std::endl << "test 2:" << std::endl << std::endl;
-	test2();
 	std::cout << std::endl;
-	return (0);
+	Fixed a;
+	Fixed const b( 10 );
+	Fixed const c( 42.42f );
+	Fixed const d( b );
+
+	a = Fixed( 1234.4321f );
+	std::cout << std::endl;
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
+
+	std::cout << std::endl;
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	std::cout << std::endl;
 }

@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 13:04:20 by wismith           #+#    #+#             */
-/*   Updated: 2022/10/30 19:13:30 by wismith          ###   ########.fr       */
+/*   Created: 2022/10/29 22:40:57 by wismith           #+#    #+#             */
+/*   Updated: 2022/10/29 23:49:05 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Zombie.hpp"
+#include "./Fixed.hpp"
 
-Zombie	*zombieHorde(int N, std::string name)
+int	main(void)
 {
-	if (N <= 0)
-		return (NULL);
-	Zombie	*aHorde = new Zombie[N];
-	for (int i = 0; i < N; i++)
-		aHorde[i].setName(name);
-	return (aHorde);
+	Fixed a;
+	Fixed b( a );
+	Fixed c;
+
+	c = b;
+
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return (0);
 }

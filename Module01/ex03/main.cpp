@@ -6,13 +6,13 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 15:39:22 by wismith           #+#    #+#             */
-/*   Updated: 2022/10/28 12:44:10 by wismith          ###   ########.fr       */
+/*   Updated: 2022/10/30 21:44:35 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Weapon.hpp"
-# include "./HumanA.hpp"
-# include "./HumanB.hpp"
+#include "./HumanA.hpp"
+#include "./HumanB.hpp"
 
 int main()
 {

@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 12:57:10 by wismith           #+#    #+#             */
-/*   Updated: 2022/10/27 15:45:04 by wismith          ###   ########.fr       */
+/*   Updated: 2022/10/30 18:53:58 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ class Zombie
 {
 	private:
 		std::string	name;
-		int			tag;
 	public:
 		Zombie();
 		~Zombie();
 		void	announce ();
-		void	setName(std::string name, int t);
+		void	setName(std::string name);
 };
 
 Zombie	*zombieHorde(int N, std::string name);

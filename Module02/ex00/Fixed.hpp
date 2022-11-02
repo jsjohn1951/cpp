@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 13:04:20 by wismith           #+#    #+#             */
-/*   Updated: 2022/10/30 19:13:30 by wismith          ###   ########.fr       */
+/*   Created: 2022/10/29 22:56:19 by wismith           #+#    #+#             */
+/*   Updated: 2022/10/29 23:34:20 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Zombie.hpp"
+#	ifndef FIXED_HPP
+# define FIXED_HPP
+# include <iostream>
 
-Zombie	*zombieHorde(int N, std::string name)
+class Fixed
 {
-	if (N <= 0)
-		return (NULL);
-	Zombie	*aHorde = new Zombie[N];
-	for (int i = 0; i < N; i++)
-		aHorde[i].setName(name);
-	return (aHorde);
-}
+	private:
+		int					fixPoint;
+		static const int	fracBits = 8;
+	public:
+		Fixed();
+		Fixed( const Fixed &fixed );
+		~Fixed();
+		Fixed & operator = (const Fixed &fixed);
+		int	getRawBits( void ) const;
+		void	setRawBits( int const raw );
+};
+
+#endif
