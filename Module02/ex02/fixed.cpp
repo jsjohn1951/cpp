@@ -6,11 +6,11 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 17:25:37 by wismith           #+#    #+#             */
-/*   Updated: 2022/11/27 17:34:18 by wismith          ###   ########.fr       */
+/*   Updated: 2022/11/27 20:07:18 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fixed.hpp"
+#include "Fixed.hpp"
 
 //!Constructors
 
@@ -115,8 +115,8 @@ float	Fixed::operator/(Fixed const &fix)
 
 //**	 End 4 arithmetic operators
 
-//**	 4 arithmetic operators
-	
+//**	4 increment / decrecment
+
 Fixed Fixed::operator++()
 {
 	this->val++;
@@ -146,8 +146,8 @@ Fixed Fixed::operator--(int)
 	this->val--;
 	return (newfix);
 }
-		
-//**	 End 4 arithmetic operators
+
+//**	 End 4 increment / decrecment
 
 //! End Operators
 

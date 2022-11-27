@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fixed.hpp                                          :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:52:51 by wismith           #+#    #+#             */
-/*   Updated: 2022/11/27 17:34:05 by wismith          ###   ########.fr       */
+/*   Updated: 2022/11/27 20:06:24 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ class Fixed
 		float	operator*(Fixed const &fix);
 		float	operator/(Fixed const &fix);
 
-		//! 4 arithmetic operators
+		//! 4 increment / decrecment
 		Fixed	operator++();
 		Fixed	operator--();
 		Fixed	operator++(int);
