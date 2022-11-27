@@ -5,23 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 22:40:57 by wismith           #+#    #+#             */
-/*   Updated: 2022/10/29 23:49:05 by wismith          ###   ########.fr       */
+/*   Created: 2022/11/25 17:53:00 by wismith           #+#    #+#             */
+/*   Updated: 2022/11/25 22:17:07 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Fixed.hpp"
+#include "fixed.hpp"
+
+void	test(void)
+{
+	std::cout << std::endl << "\x1B[32m/* test ? */" << std::endl;
+	Fixed a;
+	Fixed b( a );
+	Fixed c;
+
+	b.setRawBits(5);
+	c = b;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	std::cout << "/* end test */\x1B[0m" << std::endl;
+	std::cout << std::endl;
+}
 
 int	main(void)
 {
+	// std::cout << std::endl;
 	Fixed a;
 	Fixed b( a );
 	Fixed c;
 
 	c = b;
-
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
-	return (0);
+	// test();
+	return 0;
 }

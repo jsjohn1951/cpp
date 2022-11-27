@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 22:56:19 by wismith           #+#    #+#             */
-/*   Updated: 2022/10/29 23:34:20 by wismith          ###   ########.fr       */
+/*   Created: 2022/11/25 16:52:51 by wismith           #+#    #+#             */
+/*   Updated: 2022/11/26 23:12:20 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #	ifndef FIXED_HPP
 # define FIXED_HPP
+
 # include <iostream>
 
 class Fixed
 {
 	private:
-		int					fixPoint;
+		int					val;
 		static const int	fracBits = 8;
 	public:
+
 		Fixed();
-		Fixed( const Fixed &fixed );
+		Fixed(const Fixed &fix);
 		~Fixed();
-		Fixed & operator = (const Fixed &fixed);
-		int	getRawBits( void ) const;
-		void	setRawBits( int const raw );
+
+		Fixed	&operator=(Fixed const &fix);
+
+		int		getRawBits(void) const;
+		void	setRawBits(int const raw);
 };
 
 #endif

@@ -5,39 +5,39 @@
 #                                                     +:+ +:+         +:+      #
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/29 22:36:35 by wismith           #+#    #+#              #
-#    Updated: 2022/10/30 00:35:59 by wismith          ###   ########.fr        #
+#    Created: 2022/11/25 16:57:31 by wismith           #+#    #+#              #
+#    Updated: 2022/11/25 22:10:41 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fixedPoint
+NAME = fixed
 
-SRCS = main \
-	Fixed \
+SRCS = main\
+	fixed\
 
-OBJDIR = objects
+CC = c++
 
-OBJS = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(SRCS)))
+CFLAGS = -Wall -Werror -Wextra -std=c++98
 
-CXX = c++
+OBJDIR = Objects
 
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+OBJ = $(addprefix $(OBJDIR)/, $(addsuffix .o , $(SRCS)))
 
 $(OBJDIR)/%.o : %.cpp
 	@mkdir -p $(OBJDIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
-all : $(NAME)
+all: $(NAME)
 
-$(NAME) : $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+$(NAME) : $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-clean :
+clean:
 	rm -rf $(OBJDIR)
 
-fclean : clean
-	rm -rf $(NAME)
+fclean: clean
+	rm -f $(NAME)
 
-re : fclean all
+re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all fclean clean re
