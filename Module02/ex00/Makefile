@@ -6,14 +6,14 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/25 16:57:31 by wismith           #+#    #+#              #
-#    Updated: 2022/11/25 22:10:41 by wismith          ###   ########.fr        #
+#    Updated: 2022/11/28 15:05:57 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fixed
+NAME = ex00
 
 SRCS = main\
-	fixed\
+	Fixed\
 
 CC = c++
 
