@@ -6,11 +6,11 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/25 16:57:31 by wismith           #+#    #+#              #
-#    Updated: 2022/11/28 15:10:47 by wismith          ###   ########.fr        #
+#    Updated: 2022/11/28 15:35:32 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fixed
+NAME = ex02
 
 SRCS = main\
 	Fixed\
