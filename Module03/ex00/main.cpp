@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:29:15 by wismith           #+#    #+#             */
-/*   Updated: 2022/11/30 21:16:32 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/01 13:39:21 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,13 @@ void	test_long(void)
 
 		bob.attack("Frank");
 		bob.beRepaired(1);
+		bob.beRepaired(1);
+		bob.attack("Monkey");
+
 		std::cout << std::endl;
 		bob.retrieveAttr();
 		std::cout << std::endl;
+
 		for (int i = 0; i < 4; i++)
 			bob.takeDamage(4);
 
@@ -93,10 +97,10 @@ void	test_long(void)
 
 int	main(void)
 {
-	// default_test();
-	// test_one();
-	// test_two();
-	test_long();
+	default_test();
+	test_one();
+	test_two();
+	// test_long();
 	std::cout << std::endl;
 	return (0);
 }
