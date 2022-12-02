@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:29:45 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/01 18:17:21 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/02 15:08:01 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	this->set_hp(this->get_hp() + amount);
 	if (this->get_hp() && this->get_ep())
 	{
+		this->set_hp(this->get_hp() + amount);
 		this->set_ep(this->get_ep() - 1);
 		std::cout << "ClapTrap " << this->Name << " is healing by " << amount << "." << std::endl;
 	}
@@ -103,17 +103,17 @@ void	ClapTrap::retrieveAttr(void)
 
 void		ClapTrap::set_hp(long hp)
 {
-	(this->get_hp() > 0 && hp > 0 ? this->hit_p = (unsigned int)hp: this->hit_p = 0);
+	(this->get_hp() > 0 && hp > 0 ? this->hit_p = static_cast<unsigned int>(hp): this->hit_p = 0);
 }
 
 void		ClapTrap::set_ep(long ep)
 {
-	(this->get_hp() > 0 ? this->energy_p = (unsigned int)ep: this->energy_p = (this->energy_p + 0));
+	(this->get_hp() > 0 ? this->energy_p = static_cast<unsigned int>(ep): this->energy_p = (this->energy_p + 0));
 }
 
 void		ClapTrap::set_attack_d(long ad)
 {
-	(this->get_hp() > 0 ? this->Attack_d = (unsigned int)ad : this->Attack_d = (this->Attack_d + 0));
+	(this->get_hp() > 0 ? this->Attack_d = static_cast<unsigned int>(ad) : this->Attack_d = (this->Attack_d + 0));
 }
 
 void		ClapTrap::set_name(const std::string &name)

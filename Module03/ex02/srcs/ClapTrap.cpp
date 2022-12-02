@@ -6,11 +6,11 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:29:45 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/02 15:08:22 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/02 15:06:58 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ClapTrap.hpp"
+#include "../includes/ClapTrap.hpp"
 
 //! Constructors
 
@@ -116,6 +116,11 @@ void		ClapTrap::set_attack_d(long ad)
 	(this->get_hp() > 0 ? this->Attack_d = static_cast<unsigned int>(ad) : this->Attack_d = (this->Attack_d + 0));
 }
 
+void		ClapTrap::set_name(const std::string &name)
+{
+	this->Name = name;
+}
+
 unsigned int	ClapTrap::get_hp(void)
 {
 	return (this->hit_p);
@@ -129,6 +134,11 @@ unsigned int	ClapTrap::get_ep(void)
 unsigned int	ClapTrap::get_attack_d(void)
 {
 	return (this->Attack_d);
+}
+
+std::string		ClapTrap::get_name(void)
+{
+	return (this->Name);
 }
 
 //** end setters and getters
