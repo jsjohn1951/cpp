@@ -6,15 +6,16 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/28 18:29:57 by wismith           #+#    #+#              #
-#    Updated: 2022/12/01 18:00:11 by wismith          ###   ########.fr        #
+#    Updated: 2022/12/02 17:20:02 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = SerenaMyLove
 
-SRCS = srcs/main \
+SRCS = main \
 	srcs/ClapTrap \
 	srcs/ScavTrap \
+	tests/Tests
 
 CXX = c++
 
@@ -27,6 +28,7 @@ OBJ = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(SRCS)))
 $(OBJDIR)/%.o : %.cpp
 	@mkdir -p $(OBJDIR)
 	@mkdir -p $(OBJDIR)/srcs
+	@mkdir -p $(OBJDIR)/tests
 	$(CXX) $(CPPFLAGS) -c $< -o $@
 
 all: $(NAME)

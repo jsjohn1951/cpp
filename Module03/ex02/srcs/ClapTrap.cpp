@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:29:45 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/02 15:06:58 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/02 17:30:35 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ void	ClapTrap::attack(const std::string &target)
 	if (this->get_hp() && this->get_ep())
 	{
 		this->set_ep(this->get_ep() - 1);
-		std::cout << "ClapTrap " << this->Name << " attacked " << target << "!";
+		std::cout << this->Name << " attacked " << target << "!";
 		std::cout << " Causing " << this->get_attack_d() << " of damage." << std::endl;
 	}
 	else
-		std::cout << "ClapTrap " << this->Name << " can't hurt anyone!" << std::endl;
+		std::cout << this->Name << " can't hurt anyone!" << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -72,9 +72,9 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 	this->set_hp(am);
 	if (this->get_hp())
-		std::cout << "ClapTrap " << this->Name << " has taken " << amount << " damage!" << std::endl;
+		std::cout << this->Name << " has taken " << amount << " damage!" << std::endl;
 	else
-		std::cout << "ClapTrap " << this->Name << ": has died." << std::endl;
+		std::cout << this->Name << ": has died." << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
@@ -83,17 +83,17 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	{
 		this->set_hp(this->get_hp() + amount);
 		this->set_ep(this->get_ep() - 1);
-		std::cout << "ClapTrap " << this->Name << " is healing by " << amount << "." << std::endl;
+		std::cout << this->Name << " is healing by " << amount << "." << std::endl;
 	}
 	else
-		std::cout << "ClapTrap " << this->Name << " can't be healed!" << std::endl;
+		std::cout << this->Name << " can't be healed!" << std::endl;
 }
 
 //** displays attributes
 
 void	ClapTrap::retrieveAttr(void)
 {
-	std::cout << "ClapTrap " << this->Name << " Attr :" << std::endl << std::endl;
+	std::cout << "ClapTrap " << this->get_name() << " Attr :" << std::endl << std::endl;
 	std::cout << "\tHit points :\t" << this->get_hp() << std::endl;
 	std::cout << "\tEnergy points :\t" << this->get_ep() << std::endl;
 	std::cout << "\tAttack damage :\t" << this->get_attack_d() << std::endl;

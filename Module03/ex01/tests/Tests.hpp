@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Tests.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 18:29:15 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/02 17:38:12 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/02 15:14:50 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/02 17:25:25 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests/Tests.hpp"
+#	ifndef TESTS_HPP
+# define TESTS_HPP
 
-int	main(void)
-{
-	ClapTrap_default_test();
-	// ClapTrap_test_one();
-	// ClapTrap_test_two();
-	// ClapTrap_test_three();
-	std::cout << std::endl;
-	return (0);
-}
+# include "../includes/ScavTrap.hpp"
+
+//! ClapTrap
+void	ClapTrap_default_test(void);
+void	ClapTrap_test_one(void);
+void	ClapTrap_test_two(void);
+void	ClapTrap_test_three(void);
+
+//! ScavTrap Tests
+void	ScavTrap_default_test(void);
+void	ScavTrap_cloning_test(void);
+
+#endif
