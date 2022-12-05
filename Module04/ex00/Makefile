@@ -6,7 +6,7 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/05 15:28:25 by wismith           #+#    #+#              #
-#    Updated: 2022/12/05 17:23:08 by wismith          ###   ########.fr        #
+#    Updated: 2022/12/05 18:47:27 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS = srcs/Animal \
 	srcs/main \
 	srcs/Cat \
 	srcs/WrongAnimal \
+	srcs/WrongCat \
 
 OBJDIR = objects
 

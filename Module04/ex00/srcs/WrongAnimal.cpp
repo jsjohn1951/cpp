@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:28:13 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 17:38:50 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/05 18:48:23 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 WrongAnimal::WrongAnimal()
 {
-	this->set_type("Rand Wrong Animal");
+	this->set_type("Random Wrong Animal");
 	std::cout << this->getType() << ": Default Constructor" << std::endl;
 }
 
@@ -52,7 +52,7 @@ WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &w)
 
 void	WrongAnimal::set_type(std::string t)
 {
-	this->set_type(t);
+	this->type = t;
 }
 
 std::string	WrongAnimal::getType(void) const

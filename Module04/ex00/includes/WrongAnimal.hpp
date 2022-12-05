@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:23:11 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 17:29:22 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/05 18:45:20 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class WrongAnimal
 	public :
 		WrongAnimal();
 		WrongAnimal(const WrongAnimal &w);
-		~WrongAnimal();
+		virtual ~WrongAnimal();
 
 		WrongAnimal	&operator=(const WrongAnimal &w);
 
