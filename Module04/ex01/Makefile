@@ -6,16 +6,17 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/05 15:28:25 by wismith           #+#    #+#              #
-#    Updated: 2022/12/05 19:14:14 by wismith          ###   ########.fr        #
+#    Updated: 2022/12/05 21:52:52 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = ex01
 
 SRCS = srcs/Animal \
 	srcs/Dog \
 	srcs/main \
 	srcs/Cat \
+	srcs/Brain \
 	srcs/WrongAnimal \
 	srcs/WrongCat \
 	tests/tests \

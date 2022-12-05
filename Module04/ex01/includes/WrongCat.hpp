@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 15:23:40 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 19:16:27 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/05 18:28:32 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/05 18:39:27 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../tests/tests.hpp"
+#	ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-int main()
+# include "WrongAnimal.hpp"
+
+class WrongCat : public WrongAnimal
 {
-	Animal_t();
-	Wrong_Animal_t();
-	return (0);
-}
+	public:
+		WrongCat();
+		WrongCat(const WrongCat &w);
+		~WrongCat();
+
+		WrongCat	&operator=(const WrongCat &w);
+
+		//! Member functions
+		void		makeSound(void) const;
+};
+
+#endif

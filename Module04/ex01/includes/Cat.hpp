@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 15:23:40 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 19:16:27 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/04 19:43:58 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/05 21:40:41 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../tests/tests.hpp"
+#	ifndef CAT_HPP
+# define CAT_HPP
 
-int main()
+# include "Animal.hpp"
+# include "Brain.hpp"
+
+class Cat : public Animal
 {
-	Animal_t();
-	Wrong_Animal_t();
-	return (0);
-}
+	private:
+		Brain *brain;
+	public :
+		Cat();
+		Cat(const Cat &c);
+		~Cat();
+		Cat		&operator=(const Cat &c);
+
+		//! Member functions
+		void	makeSound(void) const;
+};
+
+#endif

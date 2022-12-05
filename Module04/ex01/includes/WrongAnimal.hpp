@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 15:23:40 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 19:16:27 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/05 17:23:11 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/05 18:45:20 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../tests/tests.hpp"
+#	ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
-int main()
+# include <iostream>
+
+class WrongAnimal
 {
-	Animal_t();
-	Wrong_Animal_t();
-	return (0);
-}
+	private :
+		std::string	type;
+	public :
+		WrongAnimal();
+		WrongAnimal(const WrongAnimal &w);
+		virtual ~WrongAnimal();
+
+		WrongAnimal	&operator=(const WrongAnimal &w);
+
+		//! member functions
+		void			set_type(std::string t);
+		std::string		getType(void) const;
+		virtual void	makeSound(void) const;
+};
+
+#endif

@@ -1,20 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 15:23:40 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 19:16:27 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/04 19:15:21 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/05 17:20:45 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../tests/tests.hpp"
+#	ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-int main()
+# include <iostream>
+
+
+class Animal
 {
-	Animal_t();
-	Wrong_Animal_t();
-	return (0);
-}
+	protected :
+		std::string	type;
+
+	public :
+		Animal();
+		Animal(const Animal &a);
+		virtual ~Animal();
+
+		Animal			&operator=(const Animal &a);
+
+		//! member functions
+		void			set_type(std::string t);
+		std::string		getType(void) const;
+		virtual void	makeSound(void) const;
+};
+
+# include "Dog.hpp"
+# include "Cat.hpp"
+
+#endif

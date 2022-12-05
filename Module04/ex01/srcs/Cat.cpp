@@ -1,47 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/04 19:27:54 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 19:08:35 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/04 19:43:41 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/05 22:18:48 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#include "../includes/Cat.hpp"
 
 //! Constructors
 
-Animal::Animal(): type("Random Animal")
+Cat::Cat()
 {
+	this->set_type("Cat");
 	std::cout << this->getType() << ": Default Constructor" << std::endl;
+	this->brain = new Brain;
 }
 
-Animal::Animal(const Animal &a): type(a.type)
+Cat::Cat(const Cat &c)
 {
-	std::cout << this->getType() << ": Animal Copy Constructor" << std::endl;
+	this->set_type(c.getType());
+	std::cout << this->getType() << ": Copy Constructor" << std::endl;
+	this->brain = new Brain;
+	this->brain->setIdeas(c.brain->getIdeas());
 }
 
 //! End Constructors
 
 //! Destructor
 
-Animal::~Animal()
+Cat::~Cat()
 {
-	std::cout << this->getType() << ": Animal Destructor" << std::endl;
+	delete this->brain;
+	std::cout << this->getType() << ": Destructor" << std::endl;
 }
 
 //! End Destructor
 
 //! Operators
 
-Animal	&Animal::operator=(const Animal &a)
+Cat	&Cat::operator=(const Cat &c)
 {
 	std::cout << "Copy Assignment Operator Overload" << std::endl;
-	if (this != &a)
-		this->set_type(a.getType());
+	if (this != &c)
+	{
+		this->set_type(c.getType());
+		this->brain->setIdeas(c.brain->getIdeas());
+	}
 	return (*this);
 }
 
@@ -49,19 +58,7 @@ Animal	&Animal::operator=(const Animal &a)
 
 //! Member functions
 
-void	Animal::set_type(std::string t)
+void	Cat::makeSound(void) const
 {
-	this->type = t;
+	std::cout << "Meoow Meoow!" << std::endl;
 }
-
-std::string	Animal::getType(void) const
-{
-	return (this->type);
-}
-
-void	Animal::makeSound(void) const
-{
-	std::cout << "This human doesn't appreciate being called an animal!" << std::endl;
-}
-
-//! End Member functions

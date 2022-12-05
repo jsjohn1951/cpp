@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 15:23:40 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 19:16:27 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/05 15:09:21 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/05 22:22:59 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../tests/tests.hpp"
+#	ifndef DOG_HPP
+# define DOG_HPP
 
-int main()
+# include "Animal.hpp"
+# include "Brain.hpp"
+
+class Dog : public Animal
 {
-	Animal_t();
-	Wrong_Animal_t();
-	return (0);
-}
+	private:
+		Brain *brain;
+	public :
+		Dog();
+		Dog(const Dog &d);
+		~Dog();
+		Dog	&operator=(const Dog &d);
+
+		//! member functions
+		void	makeSound(void) const;
+};
+
+#endif
