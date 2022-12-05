@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:20:22 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/01 18:17:06 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/04 17:20:23 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ class ClapTrap
 
 	ClapTrap(std::string name);
 
-	~ClapTrap();
+	virtual ~ClapTrap();
 
-	ClapTrap		&operator=(ClapTrap &c);
+	ClapTrap	&operator=(ClapTrap &c);
 
 	//! member functions
-	void			attack(const std::string &target);
+	virtual void	attack(const std::string &target);
 	void			takeDamage(unsigned int amount);
 	void			beRepaired(unsigned int amount);
 
@@ -48,7 +48,7 @@ class ClapTrap
 	unsigned int	get_ep(void);
 	unsigned int	get_attack_d(void);
 	std::string		get_name(void);
-	
+
 	//! other
 	void			retrieveAttr(void);
 };

@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 18:29:45 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/02 17:30:53 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/02 20:22:20 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ ClapTrap &ClapTrap::operator=(ClapTrap &c)
 {
 	if (this != &c)
 		*this = c;
+	std::cout << this->get_name() << ": ClapTrap Assignment overload operator." << std::endl;
 	return (*this);
 }
 

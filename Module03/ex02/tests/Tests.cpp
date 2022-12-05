@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.cpp                                          :+:      :+:    :+:   */
+/*   Tests.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:13:08 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/02 16:40:19 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/04 17:32:35 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Tests.hpp"
+
+
+//! ClapTrap
 
 void	ClapTrap_default_test(void)
 {
@@ -95,19 +98,43 @@ void	ClapTrap_test_three(void)
 	std::cout << "\x1B[0m";
 }
 
+//! ScavTrap
+
+void	ScavTrap_default_test(void)
+{
+	std::cout << std::endl << "ScavTrap Default Test" << std::endl;
+	std::cout << "\x1B[31m" << std::endl;
+	{
+		ScavTrap	Amber;
+
+		Amber.set_name("Amber");
+
+		std::cout << std::endl;
+		Amber.retrieveAttr();
+		std::cout << std::endl;
+
+		Amber.attack("Thalia");
+		Amber.takeDamage(5);
+		Amber.beRepaired(4);
+		Amber.guardGate();
+
+		std::cout << std::endl;
+		Amber.retrieveAttr();
+		std::cout << std::endl;
+	}
+	std::cout << "\x1B[0m";
+}
+
 void	ScavTrap_cloning_test()
 {
 	std::cout << std::endl << "Cloning_ScavTrap Test" << std::endl;
 	std::cout << "\x1B[32m" << std::endl;
 	{
 		ScavTrap	Thalia("Thalia");
-		ScavTrap	*bob = new ScavTrap;
 		ScavTrap	clone;
 		clone = Thalia;
-		*bob = clone;
 
 		clone.set_name("clone");
-		bob->set_name("clone2");
 
 		std::cout << std::endl;
 		Thalia.retrieveAttr();
@@ -121,10 +148,11 @@ void	ScavTrap_cloning_test()
 		std::cout << std::endl;
 		Thalia.retrieveAttr();
 		std::cout << std::endl;
-		delete bob;
 	}
 	std::cout << "\x1B[0m";
 }
+
+//! FrapTrap
 
 void	FrapTrap_default_test()
 {

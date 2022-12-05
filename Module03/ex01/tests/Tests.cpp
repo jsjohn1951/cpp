@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:13:08 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/02 17:25:38 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/04 17:29:52 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,13 +130,10 @@ void	ScavTrap_cloning_test(void)
 	std::cout << "\x1B[32m" << std::endl;
 	{
 		ScavTrap	Thalia("Thalia");
-		ScavTrap	*bob = new ScavTrap;
 		ScavTrap	clone;
 		clone = Thalia;
-		*bob = clone;
 
 		clone.set_name("clone");
-		bob->set_name("clone2");
 
 		std::cout << std::endl;
 		Thalia.retrieveAttr();
@@ -150,7 +147,6 @@ void	ScavTrap_cloning_test(void)
 		std::cout << std::endl;
 		Thalia.retrieveAttr();
 		std::cout << std::endl;
-		delete bob;
 	}
 	std::cout << "\x1B[0m";
 }
