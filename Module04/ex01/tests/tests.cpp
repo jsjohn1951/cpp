@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 19:14:18 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 21:51:47 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/05 22:32:51 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,40 @@ void	Wrong_Animal_t()
 		delete	meta;
 		std::cout << "\x1B[0m" << std::endl;
 	}
+}
+
+void	Brain_test()
+{
+	std::cout << std::endl;
+	//{
+	// 	Cat *cat = new Cat;
+	// 	Dog *dog = new Dog;
+
+	// 	std::cout << std::endl;
+	// 	Cat	cat2(*cat);
+	// 	Dog dog2(*dog);
+	// 	std::cout << std::endl;
+
+	// 	std::cout << std::endl;
+	// 	cat2 = *cat;
+	// 	dog2 = *dog;
+	// 	std::cout << std::endl;
+
+	// 	std::cout << std::endl;
+	// 	delete cat;
+	// 	delete dog;
+	// 	std::cout << std::endl;
+	// }
+	{
+		const Animal* j = new Dog();
+		std::cout << std::endl;
+		const Animal* i = new Cat();
+
+		std::cout << std::endl;
+
+		delete j;//should not create a leak
+		std::cout << std::endl;
+		delete i;
+	}
+	std::cout << std::endl;
 }
