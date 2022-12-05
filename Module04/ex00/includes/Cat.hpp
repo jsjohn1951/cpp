@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 19:43:58 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/04 19:47:01 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/05 16:56:33 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "Animal.hpp"
 
-class Cat : public Animal
+class Cat : virtual public Animal
 {
 	public :
 		Cat();
@@ -24,7 +24,7 @@ class Cat : public Animal
 		Cat		&operator=(Cat &c);
 
 		//! Member functions
-		void	makeSound(void);
+		void	makeSound(void) const;
 };
 
 #endif

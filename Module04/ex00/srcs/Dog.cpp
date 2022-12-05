@@ -1,67 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/04 19:27:54 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 16:57:46 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/05 15:13:35 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/05 16:51:52 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#include "../includes/Dog.hpp"
 
 //! Constructors
 
-Animal::Animal(): type("Random Animal")
+Dog::Dog()
 {
+	this->set_type("Dog");
 	std::cout << this->getType() << ": Default Constructor" << std::endl;
 }
 
-Animal::Animal(Animal &a): type(a.type)
+Dog::Dog(Dog &d)
 {
+	this->set_type(d.getType());
 	std::cout << this->getType() << ": Copy Constructor" << std::endl;
 }
 
-//! End Constructors
+//! end Constructors
 
 //! Destructor
 
-Animal::~Animal()
+Dog::~Dog()
 {
-	std::cout << this->getType() << ": Animal Destructor" << std::endl;
+	std::cout << this->getType() << ": Destructor" << std::endl;
 }
 
-//! End Destructor
+//! end Destructor
 
-//! Operators
+//! operators
 
-Animal	&Animal::operator=(Animal &a)
+Dog	&Dog::operator=(Dog &d)
 {
 	std::cout << "Copy Assignment Operator Overload" << std::endl;
-	if (this != &a)
-		this->set_type(a.getType());
+	if (this != &d)
+		this->set_type(d.getType());
 	return (*this);
 }
 
-//! End Operators
+//! end operators
 
 //! Member functions
 
-void	Animal::set_type(std::string t)
+void	Dog::makeSound(void) const
 {
-	this->type = t;
-}
-
-std::string	Animal::getType(void) const
-{
-	return (this->type);
-}
-
-void	Animal::makeSound(void) const
-{
-	std::cout << "this human doesn't appreciate being called an animal" << std::endl;
+	std::cout << "Bark Bark!" << std::endl;
 }
 
 //! End Member functions
