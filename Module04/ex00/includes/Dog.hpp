@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:09:21 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 16:56:25 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/05 17:20:19 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 # include "Animal.hpp"
 
-class Dog : virtual public Animal
+class Dog : public Animal
 {
 	public :
 		Dog();
-		Dog(Dog &d);
+		Dog(const Dog &d);
 		~Dog();
 
-		Dog	&operator=(Dog &d);
+		Dog	&operator=(const Dog &d);
 
 		//! member functions
 		void	makeSound(void) const;

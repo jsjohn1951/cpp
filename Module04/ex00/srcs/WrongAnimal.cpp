@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/04 19:27:54 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 17:21:39 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/05 17:28:13 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/05 17:38:50 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Animal.hpp"
+#include "../includes/WrongAnimal.hpp"
 
 //! Constructors
 
-Animal::Animal(): type("Random Animal")
+WrongAnimal::WrongAnimal()
 {
+	this->set_type("Rand Wrong Animal");
 	std::cout << this->getType() << ": Default Constructor" << std::endl;
 }
 
-Animal::Animal(const Animal &a): type(a.type)
+WrongAnimal::WrongAnimal(const WrongAnimal &w)
 {
+	this->set_type(w.getType());
 	std::cout << this->getType() << ": Copy Constructor" << std::endl;
 }
 
@@ -28,40 +30,39 @@ Animal::Animal(const Animal &a): type(a.type)
 
 //! Destructor
 
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
-	std::cout << this->getType() << ": Animal Destructor" << std::endl;
+	std::cout << this->getType() << ": Destructor" << std::endl;
 }
 
 //! End Destructor
 
 //! Operators
 
-Animal	&Animal::operator=(const Animal &a)
+WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &w)
 {
-	std::cout << "Copy Assignment Operator Overload" << std::endl;
-	if (this != &a)
-		this->set_type(a.getType());
+	if (this != &w)
+		this->set_type(w.getType());
 	return (*this);
 }
 
-//! End Operators
+//! End operators
 
 //! Member functions
 
-void	Animal::set_type(std::string t)
+void	WrongAnimal::set_type(std::string t)
 {
-	this->type = t;
+	this->set_type(t);
 }
 
-std::string	Animal::getType(void) const
+std::string	WrongAnimal::getType(void) const
 {
 	return (this->type);
 }
 
-void	Animal::makeSound(void) const
+void	WrongAnimal::makeSound(void) const
 {
-	std::cout << "This human doesn't appreciate being called an animal!" << std::endl;
+	std::cout << "Wrong Animal was convicted of treason! I've been framed!" << std::endl;
 }
 
 //! End Member functions

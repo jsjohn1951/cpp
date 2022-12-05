@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 19:15:21 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 16:49:45 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/05 17:20:45 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ class Animal
 
 	public :
 		Animal();
-		Animal(Animal &a);
+		Animal(const Animal &a);
 		virtual ~Animal();
 
-		Animal			&operator=(Animal &a);
+		Animal			&operator=(const Animal &a);
 
 		//! member functions
 		void			set_type(std::string t);

@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:13:35 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 16:51:52 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/05 17:21:09 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Dog::Dog()
 	std::cout << this->getType() << ": Default Constructor" << std::endl;
 }
 
-Dog::Dog(Dog &d)
+Dog::Dog(const Dog &d)
 {
 	this->set_type(d.getType());
 	std::cout << this->getType() << ": Copy Constructor" << std::endl;
@@ -39,7 +39,7 @@ Dog::~Dog()
 
 //! operators
 
-Dog	&Dog::operator=(Dog &d)
+Dog	&Dog::operator=(const Dog &d)
 {
 	std::cout << "Copy Assignment Operator Overload" << std::endl;
 	if (this != &d)
