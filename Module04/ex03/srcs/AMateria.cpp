@@ -6,11 +6,13 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:55:54 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 21:03:03 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/07 23:23:47 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/AMateria.hpp"
+
+//! Constructors
 
 AMateria::AMateria(): type("Type Not Set")
 {
@@ -30,10 +32,18 @@ AMateria::AMateria(std::string const & type)
 	std::cout << this->getType() << ": AMateria Type Constructor" << std::endl;
 }
 
+//! End Constructors
+
+//! Destructor
+
 AMateria::~AMateria()
 {
 	std::cout << this->getType() << ": AMateria Destructor" << std::endl;
 }
+
+//! End Destructor
+
+//! Operators
 
 AMateria	&AMateria::operator=(const AMateria &am)
 {
@@ -42,6 +52,10 @@ AMateria	&AMateria::operator=(const AMateria &am)
 	return (*this);
 }
 
+//! End Operators
+
+//! Member functions
+
 std::string const &AMateria::getType() const
 {
 	return (this->type);
@@ -49,12 +63,9 @@ std::string const &AMateria::getType() const
 
 void	AMateria::use(ICharacter& target)
 {
-	if (this->getType() == "ice")
-		std::cout << "Ice:" << static_cast<char>(34)
-			<< "* shoots an ice bolt at " << target.getName() << " *"
-			<< static_cast<char>(34) << std::endl;
-	else if (this->getType() == "cure")
-		std::cout << "Cure:" << static_cast<char>(34)
-			<< "* heals " << target.getName() << "'s wounds *"
+		std::cout << this->getType() << ": " << static_cast<char>(34)
+			<< "* shoots random objects aimlessly " << target.getName() << " *"
 			<< static_cast<char>(34) << std::endl;
 }
+
+//! End Member functions

@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:49:07 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 20:43:19 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/07 23:25:51 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class AMateria
 		AMateria(std::string const & type);
 
 		//! Ortho required destructor
-		~AMateria();
+		virtual ~AMateria();
 
 		//! Ortho required assignment operator overload
 		AMateria	&operator=(const AMateria &am);
