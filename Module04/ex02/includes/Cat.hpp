@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.hpp                                          :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 19:15:02 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 15:52:11 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/04 19:43:58 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/06 22:17:17 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef TESTS_HPP
-# define TESTS_HPP
+#	ifndef CAT_HPP
+# define CAT_HPP
 
-#include "../includes/Animal.hpp"
-#include "../includes/WrongCat.hpp"
-#include "../includes/Brain.hpp"
-#include "../includes/Dog.hpp"
-#include "../includes/Cat.hpp"
+# include "Animal.hpp"
+# include "Brain.hpp"
 
-void	Animal_t();
-void	Wrong_Animal_t();
-void	Brain_test();
-void	deep_copy_test();
+class Cat : public Animal
+{
+	private:
+		Brain *brain;
+	public :
+		Cat();
+		Cat(const Cat &c);
+		~Cat();
+		Cat		&operator=(const Cat &c);
+
+		//! Member functions
+		void	makeSound(void) const;
+		Brain	*getBrain(void);
+};
 
 #endif

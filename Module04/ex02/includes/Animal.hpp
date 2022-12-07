@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.hpp                                          :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 19:15:02 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 15:52:11 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/04 19:15:21 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/07 15:58:41 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef TESTS_HPP
-# define TESTS_HPP
+#	ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-#include "../includes/Animal.hpp"
-#include "../includes/WrongCat.hpp"
-#include "../includes/Brain.hpp"
-#include "../includes/Dog.hpp"
-#include "../includes/Cat.hpp"
+# include <iostream>
 
-void	Animal_t();
-void	Wrong_Animal_t();
-void	Brain_test();
-void	deep_copy_test();
+
+class Animal
+{
+	protected :
+		std::string	type;
+
+	public :
+		Animal();
+		Animal(const Animal &a);
+		virtual ~Animal();
+
+		Animal			&operator=(const Animal &a);
+
+		//! member functions
+		void			set_type(std::string t);
+		std::string		getType(void) const;
+		virtual void	makeSound(void) const = 0;
+};
 
 #endif

@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.hpp                                          :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 19:15:02 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 15:52:11 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/05 18:28:32 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/05 18:39:27 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef TESTS_HPP
-# define TESTS_HPP
+#	ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-#include "../includes/Animal.hpp"
-#include "../includes/WrongCat.hpp"
-#include "../includes/Brain.hpp"
-#include "../includes/Dog.hpp"
-#include "../includes/Cat.hpp"
+# include "WrongAnimal.hpp"
 
-void	Animal_t();
-void	Wrong_Animal_t();
-void	Brain_test();
-void	deep_copy_test();
+class WrongCat : public WrongAnimal
+{
+	public:
+		WrongCat();
+		WrongCat(const WrongCat &w);
+		~WrongCat();
+
+		WrongCat	&operator=(const WrongCat &w);
+
+		//! Member functions
+		void		makeSound(void) const;
+};
 
 #endif

@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.hpp                                          :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 19:15:02 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 15:52:11 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/05 17:23:11 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/05 18:45:20 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef TESTS_HPP
-# define TESTS_HPP
+#	ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
 
-#include "../includes/Animal.hpp"
-#include "../includes/WrongCat.hpp"
-#include "../includes/Brain.hpp"
-#include "../includes/Dog.hpp"
-#include "../includes/Cat.hpp"
+# include <iostream>
 
-void	Animal_t();
-void	Wrong_Animal_t();
-void	Brain_test();
-void	deep_copy_test();
+class WrongAnimal
+{
+	private :
+		std::string	type;
+	public :
+		WrongAnimal();
+		WrongAnimal(const WrongAnimal &w);
+		virtual ~WrongAnimal();
+
+		WrongAnimal	&operator=(const WrongAnimal &w);
+
+		//! member functions
+		void			set_type(std::string t);
+		std::string		getType(void) const;
+		virtual void	makeSound(void) const;
+};
 
 #endif
