@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:13:35 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 22:24:08 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/06 22:17:00 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Dog::Dog()
 	this->brain = new Brain;
 }
 
-Dog::Dog(const Dog &d)
+Dog::Dog(const Dog &d) : Animal()
 {
 	this->set_type(d.getType());
 	std::cout << this->getType() << ": Copy Constructor" << std::endl;
@@ -61,6 +61,11 @@ Dog	&Dog::operator=(const Dog &d)
 void	Dog::makeSound(void) const
 {
 	std::cout << "Bark Bark!" << std::endl;
+}
+
+Brain	*Dog::getBrain(void)
+{
+	return (this->brain);
 }
 
 //! End Member functions

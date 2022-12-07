@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 18:31:38 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 19:09:50 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/06 17:36:32 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ WrongCat::WrongCat()
 	std::cout << this->getType() << ": Default Constructor" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &w)
+WrongCat::WrongCat(const WrongCat &w) : WrongAnimal()
 {
 	if (this != &w)
 		this->set_type(w.getType());

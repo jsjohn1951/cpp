@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:09:21 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/06 15:55:49 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/06 22:16:00 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class Dog : public Animal
 
 		//! member functions
 		void	makeSound(void) const;
+		Brain	*getBrain(void);
 };
 
 #endif
