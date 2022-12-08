@@ -6,30 +6,31 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:55:54 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 23:23:47 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/08 17:02:11 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/AMateria.hpp"
+#include "../includes/ICharacter.hpp"
 
 //! Constructors
 
 AMateria::AMateria(): type("Type Not Set")
 {
-	std::cout << this->getType() << "AMateria Default Constructor" << std::endl;
+	// std::cout << this->getType() << ": AMateria Default Constructor" << std::endl;
 }
 
 AMateria::AMateria(const AMateria &am)
 {
 	if (this != &am)
 		this->setType(am.getType());
-	std::cout << this->getType() << ": AMateria Copy Constructor" << std::endl;
+	// std::cout << this->getType() << ": AMateria Copy Constructor" << std::endl;
 }
 
 AMateria::AMateria(std::string const & type)
 {
 	this->setType(type);
-	std::cout << this->getType() << ": AMateria Type Constructor" << std::endl;
+	// std::cout << this->getType() << ": AMateria Type Constructor" << std::endl;
 }
 
 //! End Constructors
@@ -38,7 +39,7 @@ AMateria::AMateria(std::string const & type)
 
 AMateria::~AMateria()
 {
-	std::cout << this->getType() << ": AMateria Destructor" << std::endl;
+	// std::cout << this->getType() << ": AMateria Destructor" << std::endl;
 }
 
 //! End Destructor
@@ -66,6 +67,11 @@ void	AMateria::use(ICharacter& target)
 		std::cout << this->getType() << ": " << static_cast<char>(34)
 			<< "* shoots random objects aimlessly " << target.getName() << " *"
 			<< static_cast<char>(34) << std::endl;
+}
+
+void	AMateria::setType(std::string type)
+{
+	this->type = type;
 }
 
 //! End Member functions

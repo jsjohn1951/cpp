@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 20:43:25 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 23:50:02 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/08 15:57:23 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define ICHARACTER_HPP
 
 # include <iostream>
+# include "AMateria.hpp"
+
+// class AMateria;
 
 class ICharacter
 {

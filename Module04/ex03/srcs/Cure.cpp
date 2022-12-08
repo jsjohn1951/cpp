@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 23:04:40 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 23:43:06 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/08 17:01:25 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 Cure::Cure()
 {
 	this->setType("cure");
-	std::cout << "Cure Default Contructor" << std::endl; 
+	// std::cout << "Cure Default Contructor" << std::endl; 
 }
 
 Cure::Cure(const Cure &c) : AMateria("cure")
 {
 	this->setType(c.getType());
-	std::cout << this->getType() << " Copy Constructor" << std::endl;
+	// std::cout << this->getType() << " Copy Constructor" << std::endl;
 }
 
 //! End Constructors
@@ -32,7 +32,7 @@ Cure::Cure(const Cure &c) : AMateria("cure")
 
 Cure::~Cure()
 {
-	std::cout << "Cure Destructor" << std::endl;
+	// std::cout << "Cure Destructor" << std::endl;
 }
 
 //! End Destructor

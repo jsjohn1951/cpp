@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 23:26:32 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 23:42:00 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/08 17:01:37 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 Ice::Ice()
 {
 	this->setType("ice");
-	std::cout << this->getType() << " Default Constructor" << std::endl;
+	// std::cout << this->getType() << " Default Constructor" << std::endl;
 }
 
 Ice::Ice(const Ice &c) : AMateria("ice")
 {
 	this->setType(c.getType());
-	std::cout << this->getType() << " Copy Constructor" << std::endl;
+	// std::cout << this->getType() << " Copy Constructor" << std::endl;
 }
 
 //! End Constructors
@@ -32,7 +32,7 @@ Ice::Ice(const Ice &c) : AMateria("ice")
 
 Ice::~Ice()
 {
-	std::cout << this->getType() << " Destructor" << std::endl;
+	// std::cout << this->getType() << " Destructor" << std::endl;
 }
 
 //! End Destructor

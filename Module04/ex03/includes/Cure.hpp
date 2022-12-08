@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 23:00:22 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 23:14:44 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/08 15:59:29 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define CURE_HPP
 
 # include <iostream>
-
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
 
 class Cure : public AMateria
 {

@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 23:26:51 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 23:30:36 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/08 15:59:55 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
 
 class Ice: public AMateria
 {
