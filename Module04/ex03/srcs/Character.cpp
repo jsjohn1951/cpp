@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:46:27 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/08 22:12:12 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/08 23:39:56 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ Character::Character() : Name("Random Dude"), numEntries(0), numOnFloor(0)
 {
 	// std::cout << this->getName() << " Character Default Constructor" << std::endl;
 	this->initInventory();
-	this->initFloor();
+	this->initCache();
 }
 
 Character::Character(const Character &c) : ICharacter(), Name(c.getName()), numEntries(c.getNumEntries()), numOnFloor(0)
 {
 	// std::cout << this->getName() << " Character Copy Constructor" << std::endl;
 	this->initInventory();
-	this->initFloor();
+	this->initCache();
 	if (this != &c)
-		for (int i = 0; i < c.getNumEntries(); i++)
+		for (int i = 0; i < 4; i++)
 			this->setInventoryEntry(i, c.getMateria(i));
 }
 
@@ -35,7 +35,7 @@ Character::Character(const std::string name) : Name(name), numEntries(0), numOnF
 {
 	// std::cout << this->getName() << " Character Name Constructor" << std::endl;
 	this->initInventory();
-	this->initFloor();
+	this->initCache();
 }
 
 //! End Constructors
@@ -61,8 +61,15 @@ Character::~Character()
 Character	&Character::operator=(const Character &c)
 {
 	if (this != &c)
-		for (int i = 0; i < c.getNumEntries(); i++)
-			this->setInventoryEntry(i, c.getMateria(i));
+	{
+		this->Name = c.getName();
+		for (int i = 0; i < 4; i++)
+		{
+			if (this->getMateria(i))
+				delete this->getMateria(i);
+			this->setInventoryEntry(i, c.getMateria(i)->clone());
+		}
+	}
 	return (*this);
 }
 
@@ -76,7 +83,7 @@ void	Character::initInventory(void)
 		this->inventoryEntry[i] = NULL;
 }
 
-void	Character::initFloor(void)
+void	Character::initCache(void)
 {
 	for (int i = 0; i < 4; i++)
 		this->cache[i] = NULL;
@@ -119,15 +126,20 @@ void	Character::equip(AMateria *m)
 
 void	Character::unequip(int idx)
 {
-	this->injectCache(this->getNumOnFloor(), this->getMateria(idx));
-	this->setNumOnFloor(this->getNumOnFloor() + 1);
-	this->setInventoryEntry(idx, NULL);
-	this->setNumEntries(this->getNumEntries() - 1);
+	if (idx < 4 && this->getMateria(idx))
+	{
+		this->injectCache(this->getNumOnFloor(), this->getMateria(idx));
+		this->setNumOnFloor(this->getNumOnFloor() + 1);
+		this->setInventoryEntry(idx, NULL);
+		this->setNumEntries(this->getNumEntries() - 1);
+	}
+	else
+		std::cout << this->getName() << ": Cannot unequip what has not been equiped!" << std::endl;
 }
 
 void	Character::use(int idx, ICharacter& target)
 {
-	if (this->getMateria(idx))
+	if (idx < 4 && this->getMateria(idx))
 		this->getMateria(idx)->use(target);
 	else
 		std::cout << this->getName() << ": slot " << idx << " not weaponized" << std::endl;
@@ -161,14 +173,14 @@ void	Character::setNumOnFloor(int i)
 
 AMateria	*Character::getMateria(int i) const
 {
-	if (this->inventoryEntry[i])
+	if (i < 4 && this->inventoryEntry[i])
 		return (this->inventoryEntry[i]);
 	return (NULL);
 }
 
 AMateria	*Character::getCache(int i) const
 {
-	if (this->cache[i])
+	if (i < 4 && this->cache[i])
 		return (this->cache[i]);
 	return (NULL);
 }

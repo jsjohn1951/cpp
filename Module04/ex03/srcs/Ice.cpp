@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 23:26:32 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/08 17:01:37 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/08 23:33:49 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ Ice::Ice()
 
 Ice::Ice(const Ice &c) : AMateria("ice")
 {
-	this->setType(c.getType());
+	if (this != &c)
+		*this = c;
 	// std::cout << this->getType() << " Copy Constructor" << std::endl;
 }
 
@@ -59,7 +60,7 @@ void	Ice::use(ICharacter& target)
 
 Ice	*Ice::clone(void) const
 {
-	Ice *ice = new Ice;
+	Ice *ice = new Ice(*this);
 	return (ice);
 }
 
