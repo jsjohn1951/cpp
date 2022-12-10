@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 12:46:27 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/08 23:39:56 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/09 16:06:28 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ Character	&Character::operator=(const Character &c)
 	if (this != &c)
 	{
 		this->Name = c.getName();
+		this->numEntries = c.getNumEntries();
 		for (int i = 0; i < 4; i++)
 		{
 			if (this->getMateria(i))

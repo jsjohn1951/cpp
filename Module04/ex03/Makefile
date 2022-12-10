@@ -6,7 +6,7 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 15:12:54 by wismith           #+#    #+#              #
-#    Updated: 2022/12/08 17:12:14 by wismith          ###   ########.fr        #
+#    Updated: 2022/12/10 14:13:23 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,10 @@ SRCS = main \
 	srcs/Cure \
 	srcs/Ice \
 	srcs/ICharacter \
+	srcs/IMateriaSource \
+	srcs/MateriaSource \
+	tests/tests \
+	
 
 CXX = c++
 
@@ -30,6 +34,7 @@ OBJ = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(SRCS)))
 $(OBJDIR)/%.o : %.cpp
 	@mkdir -p $(OBJDIR)
 	@mkdir -p $(OBJDIR)/srcs
+	@mkdir -p $(OBJDIR)/tests
 	$(CXX) $(CPPFLAGS) -c $< -o $@
 
 all : $(NAME)

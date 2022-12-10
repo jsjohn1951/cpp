@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   tests.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 17:40:19 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/10 15:30:26 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/10 14:14:34 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/10 15:25:25 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tests/tests.hpp"
+#	ifndef TESTS_HPP
+# define TESTS_HPP
 
-int main()
-{
-	std::cout << std::endl;
-	test_default();
-	non_default_tests();
-	testCharacter_Materia();
-	return 0;
-}
+# include "../includes/IMateriaSource.hpp"
+# include "../includes/MateriaSource.hpp"
+# include "../includes/AMateria.hpp"
+# include "../includes/Cure.hpp"
+# include "../includes/Ice.hpp"
+# include "../includes/Character.hpp"
+
+void	test_default();
+void	testCharacter_Materia(void);
+void	non_default_tests(void);
+
+#endif
