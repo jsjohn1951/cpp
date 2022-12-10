@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 19:14:18 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 15:54:49 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/10 16:26:59 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	Animal_t()
 
 void	Wrong_Animal_t()
 {
-	std::cout << std::endl << "Wrong Animal Test One : \x1B[34m" << std::endl;
+	std::cout << std::endl << "Wrong Animal Test Three : \x1B[34m" << std::endl;
 	{
 		std::cout << std::endl;
 		const WrongAnimal* meta = new WrongAnimal();

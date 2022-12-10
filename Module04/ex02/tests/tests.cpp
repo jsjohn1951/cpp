@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 19:14:18 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 16:13:56 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/10 16:30:30 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,20 +145,24 @@ void	deep_copy_test()
 		Dog *dog = new Dog;
 
 		cat->getBrain()->ideas[0] = "Hello Ideas";
-		cat->getBrain()->ideas[1] = "I'm thinking of clawing some curtains";
+		cat->getBrain()->ideas[1] = "I'm thinking of clawing some curtains"; 
 
 		dog->getBrain()->ideas[0] = "Hello Ideas";
 		dog->getBrain()->ideas[1] = "The Mail Man won't suspect my trap!";
-
-		std::cout << std::endl;
-		Cat	cat2(*cat);
-		Dog dog2(*dog);
-		std::cout << std::endl;
-
+		
+		//! test copy constructor
 		// std::cout << std::endl;
-		// cat2 = *cat;
-		// dog2 = *dog;
+		// Cat	cat2(*cat);
+		// Dog dog2(*dog);
 		// std::cout << std::endl;
+		//! End test copy constructor
+
+		//! Test copy assignment operator overload
+		std::cout << std::endl;
+		Cat cat2 = *cat;
+		Dog dog2 = *dog;
+		std::cout << std::endl;
+		//! End Test copy assignment operator overload
 
 		std::cout << std::endl;
 		std::cout << "Cat2 Ideas: " << std::endl;
@@ -169,7 +173,7 @@ void	deep_copy_test()
 		std::cout << "Dog2 Ideas: " << std::endl;
 		std::cout << dog2.getBrain()->ideas[1] << std::endl;
 		std::cout << std::endl;
-
+		
 		std::cout << std::endl;
 		delete cat;
 		delete dog;

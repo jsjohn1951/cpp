@@ -6,11 +6,11 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:23:40 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/07 16:10:42 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/10 15:54:36 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../tests/tests.hpp"
+#include "tests/tests.hpp"
 
 int main()
 {

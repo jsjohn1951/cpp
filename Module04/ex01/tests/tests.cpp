@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 19:14:18 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/06 22:28:07 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/10 16:29:34 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	Animal_t()
 
 void	Wrong_Animal_t()
 {
-	std::cout << std::endl << "Wrong Animal Test One : \x1B[34m" << std::endl;
+	std::cout << std::endl << "Wrong Animal Test Three : \x1B[34m" << std::endl;
 	{
 		std::cout << std::endl;
 		const WrongAnimal* meta = new WrongAnimal();
@@ -100,7 +100,7 @@ void	Brain_test()
 			std::cout << std::endl;
 		}
 	}
-	std::cout << std::endl << "\x1B[0mAnimal Has Brain Test One :" << std::endl << std::endl;
+	std::cout << std::endl << "\x1B[0mAnimal Has Brain Test Four :" << std::endl << std::endl;
 	std::cout << "\t Test given on the pdf \x1B[36m" << std::endl << std::endl;
 	{
 		const Animal* j = new Dog();
@@ -114,7 +114,7 @@ void	Brain_test()
 		std::cout << std::endl;
 		delete i;
 	}
-	std::cout << std::endl << "\x1B[0mAnimal Has Brain Test Two :" << std::endl << std::endl;
+	std::cout << std::endl << "\x1B[0mAnimal Has Brain Test Five :" << std::endl << std::endl;
 	std::cout << "\t Testing the copy constructors and\n\tcopy assignment operator overload \x1B[31m" << std::endl
 	<< std::endl;
 	{
@@ -141,7 +141,7 @@ void	Brain_test()
 
 void	deep_copy_test()
 {
-	std::cout << std::endl << "\x1B[0mBrain Deep Copy Test Two :" << std::endl << std::endl;
+	std::cout << std::endl << "\x1B[0mBrain Deep Copy Test Six :" << std::endl << std::endl;
 	std::cout << "\t Testing the deep copy capabilities \n\tof brain  \x1B[31m" << std::endl << std::endl;
 	{
 		Cat *cat = new Cat;
@@ -153,15 +153,19 @@ void	deep_copy_test()
 		dog->getBrain()->ideas[0] = "Hello Ideas";
 		dog->getBrain()->ideas[1] = "The Mail Man won't suspect my trap!";
 		
-		std::cout << std::endl;
-		Cat	cat2(*cat);
-		Dog dog2(*dog);
-		std::cout << std::endl;
+		//! test copy constructor
+		// std::cout << std::endl;
+		// Cat	cat2(*cat);
+		// Dog dog2(*dog);
+		// std::cout << std::endl;
+		//! End test copy constructor
 
-		// std::cout << std::endl;
-		// cat2 = *cat;
-		// dog2 = *dog;
-		// std::cout << std::endl;
+		//! Test copy assignment operator overload
+		std::cout << std::endl;
+		Cat cat2 = *cat;
+		Dog dog2 = *dog;
+		std::cout << std::endl;
+		//! End Test copy assignment operator overload
 
 		std::cout << std::endl;
 		std::cout << "Cat2 Ideas: " << std::endl;
