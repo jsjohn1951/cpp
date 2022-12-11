@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 18:31:38 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/06 17:33:34 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/11 15:47:21 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ WrongCat::~WrongCat()
 
 WrongCat	&WrongCat::operator=(const WrongCat &w)
 {
+	std::cout << this->getType() << ": WrongCat Copy Assignment Operator Overload" << std::endl;
 	if (this != &w)
 		this->set_type(w.getType());
 	return (*this);

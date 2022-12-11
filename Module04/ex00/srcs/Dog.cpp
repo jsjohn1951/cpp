@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:13:35 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/06 17:33:23 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/11 15:47:14 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Dog::~Dog()
 
 Dog	&Dog::operator=(const Dog &d)
 {
-	std::cout << "Copy Assignment Operator Overload" << std::endl;
+	std::cout << this->getType() << ": Dog Copy Assignment Operator Overload" << std::endl;
 	if (this != &d)
 		this->set_type(d.getType());
 	return (*this);

@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 19:43:41 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/06 17:33:12 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/11 15:47:10 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Cat::~Cat()
 
 Cat	&Cat::operator=(const Cat &c)
 {
-	std::cout << "Copy Assignment Operator Overload" << std::endl;
+	std::cout << this->getType() << ": Cat Copy Assignment Operator Overload" << std::endl;
 	if (this != &c)
 		this->set_type(c.getType());
 	return (*this);

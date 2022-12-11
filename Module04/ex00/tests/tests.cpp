@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 19:14:18 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/11 15:13:22 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/11 15:58:46 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,13 @@ void	test_two()
 	std::cout << "\x1B[0m" << std::endl;
 }
 
+/* 
+ *	@ test_three brief
+ * 		test created by wismith
+ * 		
+ * 		Tests assignment operator overload for animal
+ */
+
 void	test_three()
 {
 	std::cout << "Test three: "  << std::endl << std::endl;
@@ -133,8 +140,8 @@ void	test_three()
 		std::cout << std::endl;
 
 		//! display animal type for dog and cat
-		std::cout << "Dog: " << dog->getType() << std::endl;
-		std::cout << "Cat: " << cat->getType() << std::endl;
+		std::cout << "Dog:\t" << dog->getType() << std::endl;
+		std::cout << "Cat:\t" << cat->getType() << std::endl;
 
 		//! Call Assignment operator overload
 		*dog = *cat;
@@ -143,8 +150,8 @@ void	test_three()
 		std::cout << std::endl;
 
 		//! display animal type for dog and cat
-		std::cout << "dog: " << dog->getType() << std::endl;
-		std::cout << "cat: " << cat->getType() << std::endl;
+		std::cout << "dog:\t" << dog->getType() << std::endl;
+		std::cout << "cat:\t" << cat->getType() << std::endl;
 
 		//! Make Sound!
 		std::cout << "Dog:\t";
@@ -157,6 +164,48 @@ void	test_three()
 		
 		//! Delete heap allocated objects (Destruct)
 		delete dog;
+		delete cat;
+	}
+	std::cout << "\x1B[0m" << std::endl;
+}
+
+/* 
+ *	@ test_four_wrongAnminal brief
+ * 		test created by wismith
+ * 		
+ * 		Tests basics of functions that were implemented for WrongAnimal
+ * 			which is inherited by WrongCat Object
+ */
+
+void	test_four_wrongAnimal()
+{
+	std::cout << "Test Four: "  << std::endl << std::endl;
+	std::cout << "\tTest WrongAnimal & WrongCat \x1B[32m" << std::endl << std::endl; 
+	{
+		//! Constructing
+		WrongAnimal	idk;
+		WrongAnimal	*cat = new WrongCat;
+
+		//! Divider
+		std::cout << std::endl;
+
+		//! display animal type for j and i
+		std::cout << "idk:\t" << idk.getType() << std::endl;
+		std::cout << "cat:\t" << cat->getType() << std::endl;
+
+		//! Divider
+		std::cout << std::endl;
+
+		//! test make sound for each animal
+		std::cout << "idk:\t";
+		idk.makeSound();
+		std::cout << "cat:\t";
+		cat->makeSound();
+
+		//! Divider
+		std::cout << std::endl;
+		
+		//! Delete heap allocated objects (Destruct)
 		delete cat;
 	}
 	std::cout << "\x1B[0m" << std::endl;
