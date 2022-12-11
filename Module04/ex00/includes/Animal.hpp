@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 19:15:21 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 17:20:45 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/11 16:05:32 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,20 @@ class Animal
 		std::string	type;
 
 	public :
+	//! Constructors
 		Animal();
 		Animal(const Animal &a);
+	
+	//! Destructor
 		virtual ~Animal();
 
+	//! Operators
 		Animal			&operator=(const Animal &a);
 
-		//! member functions
+	//! member functions
 		void			set_type(std::string t);
 		std::string		getType(void) const;
 		virtual void	makeSound(void) const;
 };
-
-# include "Dog.hpp"
-# include "Cat.hpp"
 
 #endif

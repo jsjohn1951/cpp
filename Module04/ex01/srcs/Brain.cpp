@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 21:30:23 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 22:19:49 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/11 16:37:59 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ Brain::Brain()
 Brain::Brain(const Brain &b)
 {
 	if(this != &b)
-		for(int i = 0; i < 100; i++)
-			this->ideas[i] = b.ideas[i];
+		this->setIdeas(b.ideas);
 }
 
 Brain::~Brain()

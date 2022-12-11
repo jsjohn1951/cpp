@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 19:27:54 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/05 19:08:35 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/11 16:17:24 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Animal::~Animal()
 
 Animal	&Animal::operator=(const Animal &a)
 {
-	std::cout << "Copy Assignment Operator Overload" << std::endl;
+	std::cout << this->getType() << ": Animal Copy Assignment Operator Overload" << std::endl;
 	if (this != &a)
 		this->set_type(a.getType());
 	return (*this);
