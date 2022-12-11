@@ -6,12 +6,13 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 21:30:23 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/11 16:37:59 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/11 18:13:11 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Brain.hpp"
 
+//! Constructors
 Brain::Brain()
 {
 	std::cout << "Brain Constructor" << std::endl;
@@ -20,30 +21,50 @@ Brain::Brain()
 Brain::Brain(const Brain &b)
 {
 	if(this != &b)
-		this->setIdeas(b.ideas);
+		for (int i = 0; i < 100; i++)
+			this->setIdea(i, b.getIdea(i));
 }
+
+//! End Constructors
+
+//! Destructor
 
 Brain::~Brain()
 {
 	std::cout << "Brain Destructor" << std::endl;
 }
 
+//! End Destructor
+
+//! Operators
+
 Brain	&Brain::operator=(const Brain &b)
 {
 	if(this != &b)
-		this->setIdeas(b.ideas);
+		for (int i = 0; i < 100; i++)
+			this->setIdea(i, b.getIdea(i));
 	return (*this);
 }
 
-std::string	*Brain::getIdeas(void)
+//! End Operators
+
+//! Member functions
+
+std::string	Brain::getIdea(int i) const
 {
-	std::cout << "Brain ideas Getter Called" << std::endl;
-	return (this->ideas);
+	return (this->ideas[i]);
 }
 
-void	Brain::setIdeas(const std::string *ideasEntry)
+void	Brain::setIdea(int i, std::string idea)
 {
-	std::cout << "Brain ideas Setter Called" << std::endl;
-	for(int i = 0; i < 100; i++)
-		this->ideas[i] = ideasEntry[i];
+	if (i < 100 && i >= 0)
+		this->ideas[i] = idea;
 }
+
+void	Brain::setAllIdeas(Brain *b)
+{
+	for (int i = 0; i < 100; i++)
+		this->setIdea(i, b->getIdea(i));
+}
+
+//! End Member functions

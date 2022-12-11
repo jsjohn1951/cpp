@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:23:40 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/10 16:02:27 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/11 18:06:14 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int main()
 {
-	// Animal_t();
-	// Wrong_Animal_t();
-	Brain_test();
-	deep_copy_test();
+	std::cout << std::endl;
+	// default_brain_test();
+	// test_one_brain();
+	test_two_brain();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 19:43:41 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/06 22:18:06 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/11 17:27:45 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Cat::Cat(const Cat &c) : Animal()
 	this->set_type(c.getType());
 	std::cout << this->getType() << ": Copy Constructor" << std::endl;
 	this->brain = new Brain;
-	this->brain->setIdeas(c.brain->getIdeas());
+	this->brain->setAllIdeas(c.brain);
 }
 
 //! End Constructors
@@ -45,11 +45,11 @@ Cat::~Cat()
 
 Cat	&Cat::operator=(const Cat &c)
 {
-	std::cout << "Copy Assignment Operator Overload" << std::endl;
+	std::cout << this->getType() << ": Cat Copy Assignment Operator Overload" << std::endl;
 	if (this != &c)
 	{
 		this->set_type(c.getType());
-		this->brain->setIdeas(c.brain->getIdeas());
+		this->brain->setAllIdeas(c.brain);
 	}
 	return (*this);
 }
