@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:23:40 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/10 16:26:30 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/11 14:46:06 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int main()
 {
-	Animal_t();
-	Wrong_Animal_t();
+	std::cout << std::endl;
+	// default_test();
+	// test_two();
+	test_three();
 	return (0);
 }
