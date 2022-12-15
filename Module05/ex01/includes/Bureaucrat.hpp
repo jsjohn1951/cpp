@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:36:10 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/14 17:24:24 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/14 22:49:34 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
+# include "Form.hpp"
 
+class Form;
 
 class Bureaucrat
 {
@@ -60,9 +62,8 @@ class Bureaucrat
 		int			getGrade(void) const;
 		void		increGrade(void);
 		void		decreGrade(void);
-
+		void		signForm(Form &f);
 };
-
 
 std::ostream	&operator<<(std::ostream &o, const Bureaucrat &b);
 
