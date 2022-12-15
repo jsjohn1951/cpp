@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 19:53:45 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/15 10:32:15 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/15 10:47:13 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,12 +120,12 @@ bool	Form::beSigned(const Bureaucrat &b)
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return ("Form GradeTooHigh Exception");
+	return ("GradeTooHigh Exception");
 }
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return ("Form GradeTooLow Exception");
+	return ("GradeTooLow Exception");
 }
 
 //** ------------- End Exception Classes ------------- **//

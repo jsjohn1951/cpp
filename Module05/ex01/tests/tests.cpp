@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:18:08 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/15 10:31:46 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/15 10:44:59 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,7 +213,7 @@ void	test_Form_two()
 		try
 		{
 			//! Constructs
-			Form	f("EP1k2", 130, 150);
+			Form	f("EP1k2", 129, 150);
 			Bureaucrat	john("John", 130);
 
 			//! Divider

@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:45:50 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/14 23:01:18 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/15 10:46:25 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,16 @@ void	Bureaucrat::decreGrade(void)
 
 void	Bureaucrat::signForm(Form &f)
 {
-	if (f.beSigned(*this))
-		std::cout << this->getName() << " Bureaucrat signed " << f.getName() << std::endl;
-	else
+	try
+	{
+		if (f.beSigned(*this))
+			std::cout << this->getName() << " Bureaucrat signed " << f.getName() << std::endl;
+	}
+	catch (std::exception &e)
 	{
 		std::cout << this->getName() << " Bureaucrat couldn't sign form " << f.getName()
 		<< " because ";
-		(f.getGradeToSign() > this->getGrade() ? std::cout << "'unknown reasons'" : std::cout << "'grade was too low'");
-		std::cout << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 }
 
