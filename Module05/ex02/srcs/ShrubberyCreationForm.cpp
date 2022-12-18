@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 22:48:35 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/16 08:31:20 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/16 19:46:14 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 //! Member functions
 
-void ShrubberyCreationForm::createShrubbery()
+void ShrubberyCreationForm::createShrubbery() const
 {
 	std::ofstream	file(this->getTarget().append("_shrubbery").c_str());
 	
@@ -71,20 +71,20 @@ void ShrubberyCreationForm::createShrubbery()
 		file << "         *  |||" << std::endl;
 		file << "          **|||" << std::endl;
 		file << "            ||||" << std::endl;
-		file << "        -=-~  .-^- _" << std::endl;
+		file << "        -=-~  .-^- _";
+		std::cout << "Shrubbery Created in " << this->getTarget() << "_shrubbery" << std::endl;
 	}
 	else
 		std::cout << "Failed to create file" << std::endl;
 	file.close();
 }
 
-void	ShrubberyCreationForm::execute(Bureaucrat const & executor)
+void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	std::cout << "Attempting to create Shrubbery..." << std::endl;
 	if (!this->getSign() || executor.getGrade() > this->getGradeToExec())
 		(!this->getSign() ? throw DocumentUnsignedException() : throw GradeTooLowException());
-	else
-		this->createShrubbery();
+	this->createShrubbery();
 }
 
 std::string	ShrubberyCreationForm::getTarget() const

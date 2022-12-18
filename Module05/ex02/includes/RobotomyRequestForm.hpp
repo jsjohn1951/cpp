@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 15:56:11 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/16 19:44:20 by wismith          ###   ########.fr       */
+/*   Created: 2022/12/16 11:57:11 by wismith           #+#    #+#             */
+/*   Updated: 2022/12/18 13:55:20 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#	ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
 # include <iostream>
+# include <cstdlib>
 # include "Form.hpp"
 
-class PresidentialPardonForm : public AForm
+class RobotomyRequestForm : public AForm
 {
 	private :
 		//! Attributes
 		const std::string Target;
-		
+
 	public :
-	
 		//! Constructors
-		PresidentialPardonForm();
-		PresidentialPardonForm(const PresidentialPardonForm &p);
-		PresidentialPardonForm(const std::string &target);
+		RobotomyRequestForm();
+		RobotomyRequestForm(const RobotomyRequestForm &r);
+		RobotomyRequestForm(const std::string target);
 
 		//! Destructor
-		~PresidentialPardonForm();
+		~RobotomyRequestForm();
 
-		//! Assignment Operator overload
-		PresidentialPardonForm	&operator=(const PresidentialPardonForm &p);
+		//! Operators
+		RobotomyRequestForm		&operator=(const RobotomyRequestForm &r);
 
 		//! Member functions
 		void					execute(Bureaucrat const & executor) const;
-		std::string				getTarget() const;
+		std::string 			getTarget() const;
 };
 
 #endif

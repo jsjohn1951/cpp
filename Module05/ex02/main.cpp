@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:31:52 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/16 08:14:19 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/18 13:50:34 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,16 @@ int	main(void)
 	//** ----- ex02 ----- **//
 	
 	// //! default ex02 test
-	// std::cout << std::endl;
-	// default_ex02_test();
+	std::cout << std::endl;
+	default_ex02_test();
 	
 	//! ex02 test one
 	std::cout << std::endl;
 	test_ex02_one();
+
+	//! ex02 test two
+	std::cout << std::endl;
+	test_ex02_two();
 
 	//** ----- End ex02 ----- **//
 	

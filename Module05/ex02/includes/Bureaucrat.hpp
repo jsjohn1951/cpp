@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:36:10 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/15 15:52:04 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/16 19:36:24 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ class Bureaucrat
 		void		increGrade(void);
 		void		decreGrade(void);
 		void		signForm(AForm &f);
+		void		executeForm(AForm const &f);
 };
 
 std::ostream	&operator<<(std::ostream &o, const Bureaucrat &b);

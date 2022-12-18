@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:16:54 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/16 08:03:45 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/16 19:55:25 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../includes/Bureaucrat.hpp"
 # include "../includes/PresidentialPardonForm.hpp"
 # include "../includes/ShrubberyCreationForm.hpp"
+# include "../includes/RobotomyRequestForm.hpp"
 
 //! ex00 tests
 void	default_test();
@@ -31,5 +32,6 @@ void	test_Bureaucrat_two();
 //! ex02 tests
 void	default_ex02_test();
 void	test_ex02_one();
+void	test_ex02_two();
 
 #endif

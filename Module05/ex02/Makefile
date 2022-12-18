@@ -6,7 +6,7 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 12:26:48 by wismith           #+#    #+#              #
-#    Updated: 2022/12/16 07:59:55 by wismith          ###   ########.fr        #
+#    Updated: 2022/12/16 12:30:50 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS = main \
 	srcs/Form \
 	srcs/PresidentialPardonForm \
 	srcs/ShrubberyCreationForm \
+	srcs/RobotomyRequestForm \
 	tests/tests \
 
 OBJDIR = objects

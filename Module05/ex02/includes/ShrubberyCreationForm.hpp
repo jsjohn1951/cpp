@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 22:40:34 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/16 07:53:59 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/16 19:46:04 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class ShrubberyCreationForm : public AForm
 		const std::string Target;
 
 		//! Private Member functions
-		void	createShrubbery();
+		void	createShrubbery() const;
 
 	public :
 		//! Constructors
@@ -39,7 +39,7 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm &s);
 		
 		//! Member functions
-		void					execute(Bureaucrat const & executor);
+		void					execute(Bureaucrat const & executor) const;
 		std::string				getTarget() const;
 		
 		

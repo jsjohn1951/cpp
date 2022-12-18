@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:57:19 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/16 07:44:58 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/16 19:45:07 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPard
 
 //! Member functions
 
-void	PresidentialPardonForm::execute(Bureaucrat const &executer)
+void	PresidentialPardonForm::execute(Bureaucrat const &executer) const
 {
 	std::cout << "Attempting to execute..." << std::endl;
 	if (!this->getSign() || executer.getGrade() > this->getGradeToExec())

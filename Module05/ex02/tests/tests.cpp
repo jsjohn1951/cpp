@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:18:08 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/16 08:03:33 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/18 13:49:56 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,19 +260,19 @@ void	default_ex02_test()
 		try
 		{
 			//! Constructing
-			Bureaucrat	john("John", 4);
+			Bureaucrat	jack("Jack", 4);
 
 			//! Divider
 			std::cout << std::endl;
 
 			//! test sign contract
-			john.signForm(*f);
+			jack.signForm(*f);
 
 			//! Divider
 			std::cout << std::endl;
 
 			//! test post-signing execution contract
-			f->execute(john);
+			jack.executeForm(*f);
 
 			//! Divider
 			std::cout << std::endl;
@@ -303,6 +303,49 @@ void	test_ex02_one()
 		try
 		{
 			//! Constructing
+			Bureaucrat	dale("Dale", 4);
+
+			//! Divider
+			std::cout << std::endl;
+
+			//! test sign contract
+			dale.signForm(*f);
+
+			//! Divider
+			std::cout << std::endl;
+
+			//! test post-signing execution contract
+			dale.executeForm(*f);
+
+			//! Divider
+			std::cout << std::endl;
+
+		}
+		catch (std::exception & e)
+		{
+			//! Print out Exception msg
+			std::cout << e.what() << std::endl;
+		}
+		//! Divider
+		std::cout << std::endl;
+		//! Destruct 
+		delete f;
+	}
+	std::cout << "\x1B[0m";
+}
+
+void	test_ex02_two()
+{
+	std::cout << "ex02 Test two: " << std::endl;
+	std::cout << "\tTests the RobotomyRequestForm" << std::endl;
+	std::cout << "\x1B[32m" << std::endl;
+	{
+		AForm	*f = new RobotomyRequestForm("King Kong");
+		//! Divider
+		std::cout << std::endl;
+		try
+		{
+			//! Constructing
 			Bureaucrat	john("John", 4);
 
 			//! Divider
@@ -315,7 +358,7 @@ void	test_ex02_one()
 			std::cout << std::endl;
 
 			//! test post-signing execution contract
-			f->execute(john);
+			john.executeForm(*f);
 
 			//! Divider
 			std::cout << std::endl;
