@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 12:03:42 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/18 14:07:48 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/19 16:44:46 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,12 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &r)
 {
-	(void) r;
 	std::cout << this->getName() << ": Copy assignment operator overload called" << std::endl;
-	std::cout << "\tUnable to copy anything! Target is const" << std::endl;
+	if (this != &r)
+	{
+		this->setSign(r.getSign());
+		const_cast<std::string &>(this->Target) = r.getTarget();
+	}
 	return (*this);
 }
 

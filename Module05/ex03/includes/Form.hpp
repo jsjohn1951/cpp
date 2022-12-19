@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 19:51:51 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/16 19:43:18 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/19 16:17:57 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ class AForm
 		void			setGradeToExec(int grade);
 
 		//** Other **//
-		bool 			beSigned(const Bureaucrat &b);
+		void 			beSigned(const Bureaucrat &b);
 		virtual	void	execute(Bureaucrat const & executor) const = 0;
 
 		//** ------------- Exception Classes ------------- **//
@@ -64,7 +64,7 @@ class AForm
 		public :
 			const char *what() const throw();
 	};
-	
+
 	class	GradeTooLowException : public std::exception
 	{
 		public :

@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:45:50 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/14 17:25:31 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/19 17:35:30 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Bureaucrat::Bureaucrat() : Name("Random Dude"), grade(150)
 	std::cout << this->getName() << " Bureaucrat: Default Constructor" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &b) : Name(b.getName()) , grade(b.getGrade())
+Bureaucrat::Bureaucrat(const Bureaucrat &b) : Name(b.getName()), grade(b.getGrade())
 {
 	std::cout << this->getName() << " Bureaucrat: Copy Constructor" << std::endl;
 }
@@ -50,9 +50,12 @@ Bureaucrat::~Bureaucrat()
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &b)
 {
-	if (this != &b)
-		this->setName(b.getName());
 	std::cout << this->getName() << " Bureaucrat: Assignment Operator Overload" << std::endl;
+	if (this != &b)
+	{
+		this->setName(b.getName());
+		this->setGrade(b.getGrade());
+	}
 	return (*this);
 }
 
@@ -82,18 +85,18 @@ int	Bureaucrat::getGrade(void) const
 
 void	Bureaucrat::increGrade(void)
 {
+	std::cout << this->getName() << " attempting to increment grade..." << std::endl;
 	if ((this->getGrade() - 1) < 1)
 		throw (GradeTooHighException());
-	std::cout << this->getName() << " incrementing grade " << std::endl; 
 	this->setGrade(this->getGrade() - 1);
 	std::cout << this->getName() << "'s new grade: " << this->getGrade() << std::endl;
 }
 
 void	Bureaucrat::decreGrade(void)
 {
+	std::cout << this->getName() << " attempting to decrement grade..." << std::endl;
 	if ((this->getGrade() + 1) > 150)
 		throw (GradeTooLowException());
-	std::cout << this->getName() << " decrementing grade " << std::endl; 
 	this->setGrade(this->getGrade() + 1);
 	std::cout << this->getName() << "'s new grade: " << this->getGrade() << std::endl;
 }

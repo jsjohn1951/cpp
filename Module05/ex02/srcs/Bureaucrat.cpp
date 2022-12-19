@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:45:50 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/18 14:05:53 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/19 16:29:08 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,12 @@ Bureaucrat::~Bureaucrat()
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &b)
 {
-	if (this != &b)
-		this->setName(b.getName());
 	std::cout << this->getName() << " Bureaucrat: Assignment Operator Overload" << std::endl;
+	if (this != &b)
+	{
+		this->setName(b.getName());
+		this->setGrade(b.getGrade());
+	}
 	return (*this);
 }
 
@@ -82,18 +85,18 @@ int	Bureaucrat::getGrade(void) const
 
 void	Bureaucrat::increGrade(void)
 {
+	std::cout << this->getName() << " attempting to increment grade..." << std::endl;
 	if ((this->getGrade() - 1) < 1)
 		throw (GradeTooHighException());
-	std::cout << this->getName() << " incrementing grade " << std::endl; 
 	this->setGrade(this->getGrade() - 1);
 	std::cout << this->getName() << "'s new grade: " << this->getGrade() << std::endl;
 }
 
 void	Bureaucrat::decreGrade(void)
 {
+	std::cout << this->getName() << " attempting to decrement grade..." << std::endl;
 	if ((this->getGrade() + 1) > 150)
 		throw (GradeTooLowException());
-	std::cout << this->getName() << " decrementing grade " << std::endl; 
 	this->setGrade(this->getGrade() + 1);
 	std::cout << this->getName() << "'s new grade: " << this->getGrade() << std::endl;
 }
@@ -102,8 +105,8 @@ void	Bureaucrat::signForm(AForm &f)
 {
 	try
 	{
-		if (f.beSigned(*this))
-			std::cout << this->getName() << " Bureaucrat signed " << f.getName() << std::endl;
+		f.beSigned(*this);
+		std::cout << this->getName() << " Bureaucrat signed " << f.getName() << std::endl;
 	}
 	catch (std::exception &e)
 	{

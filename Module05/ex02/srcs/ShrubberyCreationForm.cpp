@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 22:48:35 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/16 19:46:14 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/19 16:45:12 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,12 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &s)
 {
-	(void) s;
 	std::cout << this->getName() << ": Copy assignment operator overload called" << std::endl;
-	std::cout << "\tUnable to copy anything! Target is const" << std::endl;
+	if (this != &s)
+	{
+		this->setSign(s.getSign());
+		const_cast<std::string &>(this->Target) = s.getTarget();
+	}
 	return (*this);
 }
 
@@ -57,7 +60,7 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 void ShrubberyCreationForm::createShrubbery() const
 {
 	std::ofstream	file(this->getTarget().append("_shrubbery").c_str());
-	
+
 	if (file.good())
 	{
 		file << "       &&& &&  & &&" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:57:19 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/16 19:45:07 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/19 17:21:29 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,12 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPardonForm &p)
 {
-	(void) p;
 	std::cout << this->getName() << ": Copy assignment operator overload called" << std::endl;
-	std::cout << "\tUnable to copy anything! Target is const" << std::endl;
+	if (this != &p)
+	{
+		this->setSign(p.getSign());
+		const_cast<std::string &>(this->Target) = p.getTarget();
+	}
 	return (*this);
 }
 

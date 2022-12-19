@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 19:51:51 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/14 23:06:07 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/19 14:13:15 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Form
 		public :
 			const char *what() const throw();
 	};
-	
+
 	class	GradeTooLowException : public std::exception
 	{
 		public :
@@ -65,7 +65,7 @@ class Form
 		void		setSign(bool sign);
 
 		//** Other **//
-		bool beSigned(const Bureaucrat &b);
+		void 		beSigned(const Bureaucrat &b);
 };
 
 std::ostream	&operator<<(std::ostream &o, const Form &f);

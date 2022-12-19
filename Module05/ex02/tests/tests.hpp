@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:16:54 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/16 19:55:25 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/19 19:36:08 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,16 @@
 void	default_test();
 void	test_Bureaucrat_one();
 void	test_Bureaucrat_two();
+void	test_Bureaucrat_three();
 
 //! ex01 tests
-// void	default_Form_test();
-// void	test_Form_one();
-// void	test_Form_two();
+//** unable to instantiate AForm. AForm is abstract and contains a pure virtual function
+// void	default_instantiate_test();
 
 //! ex02 tests
 void	default_ex02_test();
 void	test_ex02_one();
 void	test_ex02_two();
+void	test_ex02_three();
 
 #endif

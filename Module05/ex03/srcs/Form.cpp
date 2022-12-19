@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 19:53:45 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/16 08:33:33 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/19 16:20:11 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ AForm	&AForm::operator=(const AForm &f)
 	if (this != &f)
 	{
 		this->setSign(f.getSign());
-		std::cout << "\tForm msg: Some attributes are const, cannot copy values" << std::endl;
+		const_cast<std::string &>(this->Name) = f.getName();
+		const_cast<int &>(this->gradeToSign) = f.getGradeToSign();
+		const_cast<int &>(this->gradeToExec) = f.getGradeToExec();
 	}
 	return (*this);
 }
@@ -98,16 +100,15 @@ void	AForm::setSign(bool sign)
 
 //** Other
 
-bool	AForm::beSigned(const Bureaucrat &b)
+void	AForm::beSigned(const Bureaucrat &b)
 {
 	if (b.getGrade() <= this->getGradeToSign())
 	{
-		std::cout << b.getName() << " is signing the " << this->getName() << std::endl;
+		std::cout << b.getName() << " is signing the " << this->getName() << " Form" << std::endl;
 		this->setSign(true);
 	}
 	else
 		throw GradeTooLowException();
-	return (this->getSign());
 }
 
 //** End Other
