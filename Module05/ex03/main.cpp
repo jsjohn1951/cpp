@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:31:52 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/19 18:02:41 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/19 20:43:51 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ int	main(void)
 	//! ex02 test two
 	// std::cout << std::endl;
 	// test_ex02_two();
+
+	//! test AForm instantiation
+	// default_instantiate_test();
 
 	//** ----- End ex02 ----- **//
 

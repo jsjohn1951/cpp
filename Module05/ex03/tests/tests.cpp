@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:18:08 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/19 18:34:40 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/19 20:43:08 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,11 @@ void	test_Bureaucrat_three()
 
 //** unable to instantiate AForm. AForm is abstract and contains a pure virtual function
 
+// void	default_instantiate_test()
+// {
+// 	AForm	form("ap123", 130, 150);
+// }
+
 //! ---------------- End ex01 tests ---------------- !//
 
 //! ---------------- ex02 tests ---------------- !//
@@ -309,6 +314,90 @@ void	test_ex02_two()
 		std::cout << std::endl;
 		//! Destruct
 		delete f;
+	}
+	std::cout << "\x1B[0m";
+}
+
+void	test_ex02_three()
+{
+	std::cout << "ex02 Test two: " << std::endl;
+	std::cout << "\tTests the RobotomyRequestForm" << std::endl;
+	std::cout << "\x1B[32m" << std::endl;
+	{
+		//! Presidential Constructors
+		PresidentialPardonForm	p("Phill");
+		PresidentialPardonForm	other(p);
+		PresidentialPardonForm	other2;
+
+		//! Divider
+		std::cout << std::endl;
+
+		//! assignment
+		other2 = other;
+
+		//! Divider
+		std::cout << std::endl;
+
+		//! Results
+		std::cout << "Results: " << std::endl;
+		std::cout << p << std::endl;
+		std::cout << other << std::endl;
+		std::cout << other2 << std::endl;
+
+		//! Divider
+		std::cout << std::endl;
+	}
+	//! Divider
+	std::cout << std::endl;
+	{
+		//! Shrubbery Constructors
+		ShrubberyCreationForm	p("Shrub");
+		ShrubberyCreationForm	other(p);
+		ShrubberyCreationForm	other2;
+
+		//! Divider
+		std::cout << std::endl;
+
+		//! assignment
+		other2 = other;
+
+		//! Divider
+		std::cout << std::endl;
+
+		//! Results
+		std::cout << "Results: " << std::endl;
+		std::cout << p << std::endl;
+		std::cout << other << std::endl;
+		std::cout << other2 << std::endl;
+
+		//! Divider
+		std::cout << std::endl;
+	}
+	//! Divider
+	std::cout << std::endl;
+	{
+		//! Shrubbery Constructors
+		RobotomyRequestForm	p("Robotomy");
+		RobotomyRequestForm	other(p);
+		RobotomyRequestForm	other2;
+
+		//! Divider
+		std::cout << std::endl;
+
+		//! assignment
+		other2 = other;
+
+		//! Divider
+		std::cout << std::endl;
+
+		//! Results
+		std::cout << "Results: " << std::endl;
+		std::cout << p << std::endl;
+		std::cout << other << std::endl;
+		std::cout << other2 << std::endl;
+
+		//! Divider
+		std::cout << std::endl;
 	}
 	std::cout << "\x1B[0m";
 }
