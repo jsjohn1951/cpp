@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:56:11 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/16 19:44:20 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/19 21:03:53 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 # define PRESIDENTIALPARDONFORM_HPP
 
 # include <iostream>
-# include "Form.hpp"
+# include "AForm.hpp"
 
 class PresidentialPardonForm : public AForm
 {
 	private :
 		//! Attributes
 		const std::string Target;
-		
+
 	public :
-	
+
 		//! Constructors
 		PresidentialPardonForm();
 		PresidentialPardonForm(const PresidentialPardonForm &p);

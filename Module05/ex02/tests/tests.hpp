@@ -6,14 +6,14 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:16:54 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/19 19:36:08 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/19 21:04:33 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #	ifndef TESTS_HPP
 # define TESTS_HPP
 
-# include "../includes/Form.hpp"
+# include "../includes/AForm.hpp"
 # include "../includes/Bureaucrat.hpp"
 # include "../includes/PresidentialPardonForm.hpp"
 # include "../includes/ShrubberyCreationForm.hpp"
