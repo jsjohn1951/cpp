@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:36:10 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/19 17:58:36 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/19 21:03:49 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
-# include "Form.hpp"
+# include "AForm.hpp"
 
 class AForm;
 
