@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:39:01 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/20 21:07:07 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/21 12:03:09 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 
 			//! Constructing
 			ConvScalar scal(argv[1]);
+			scal.convert();
 
 			//! Divider
 			std::cout << std::endl;

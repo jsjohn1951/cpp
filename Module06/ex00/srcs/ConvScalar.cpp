@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:07:13 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/20 21:09:30 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/21 12:49:34 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 ConvScalar::ConvScalar()
 {
 	std::cout << "ConvScalar: Default Constructor" << std::endl;
+	for (int i = 0; i < 4; i++)
+		this->setType(false, i);
 }
 
 ConvScalar::ConvScalar(const ConvScalar &c) : Lit(c.Lit), undefined(c.undefined), C(c.getChar()), I(c.getInt()), F(c.getFloat()), D(c.getDouble())
@@ -24,11 +26,17 @@ ConvScalar::ConvScalar(const ConvScalar &c) : Lit(c.Lit), undefined(c.undefined)
 	std::cout << "ConvScalar: Copy Constructor" << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->setType(c.getType(i), i);
+	for (int i = 0; i < 4; i++)
+		this->setIsPrint(c.getIsPrint(i), i);
 }
 
 ConvScalar::ConvScalar(char *lit) : Lit(lit), undefined(false), C(0), I(0), F(0), D(0)
 {
 	std::cout << "ConvScalar: Literal Constructor" << std::endl;
+	for (int i = 0; i < 4; i++)
+		this->setType(false, i);
+	for (int i = 0; i < 4; i++)
+		this->setIsPrint(false, i);
 }
 
 //! End Constructors
@@ -54,13 +62,13 @@ ConvScalar	&ConvScalar::operator=(const ConvScalar &c)
 std::ostream	&operator<<(std::ostream &o, const ConvScalar &c)
 {
 	o << "char: ";
-	(c.getType(Char) ? o << c.getChar() << std::endl : (std::isprint(c.getChar()) ? o << "impossible" << std::endl : o << "Non displayable" << std::endl));
+	(c.getIsPrint(Char) ? o << c.getChar() << std::endl : (c.getChar() > 32 && c.getChar() < 127 ? o << "impossible" << std::endl : o << "Non displayable" << std::endl));
 	o << "int: ";
-	(c.getType(Int) ? o << c.getInt() << std::endl : o << "impossible" << std::endl);
+	(c.getIsPrint(Int) ? o << c.getInt() << std::endl : o << "impossible" << std::endl);
 	o << "float: ";
-	(c.getType(Float) ? o << c.getFloat() << std::endl : o << "impossible" << std::endl);
+	(c.getIsPrint(Float) ? o << c.getFloat() << "f" << std::endl : o << "impossible" << std::endl);
 	o << "double: ";
-	(c.getType(Double) ? o << c.getDouble() : o << "impossible");
+	(c.getIsPrint(Double) ? o << c.getDouble() : o << "impossible");
 	return (o);
 }
 
@@ -74,9 +82,14 @@ void	ConvScalar::convert()
 {
 	if (!this->getlit())
 		throw (EmptyStr());
-	std::string	str = this->getlit();
-	this->setType(true, Char);
-	this->setChar(str[0]);
+	this->setFloat(std::strtof(this->getlit(), NULL));
+	this->setIsPrint(true, Float);
+	this->setInt(static_cast<int>(this->getFloat()));
+	this->setIsPrint(true, Int);
+	this->setDouble(std::strtod(this->getlit(), NULL));
+	this->setIsPrint(true, Double);
+	this->setChar(this->getInt());
+	(this->getInt() <= 32 || this->getInt() >= 127 ? this->setIsPrint(false, Char) : this->setIsPrint(true, Char));
 }
 
 //! End Member functions
@@ -93,6 +106,11 @@ char	*ConvScalar::getlit() const
 bool	ConvScalar::getType(int i) const
 {
 	return (this->Type[i]);
+}
+
+bool	ConvScalar::getIsPrint(int i) const
+{
+	return (this->isPrint[i]);
 }
 
 char	ConvScalar::getChar() const
@@ -127,6 +145,11 @@ void	ConvScalar::setLit(char *lit)
 void	ConvScalar::setType(bool type, int i)
 {
 	this->Type[i] = type;
+}
+
+void	ConvScalar::setIsPrint(bool type, int i)
+{
+	this->isPrint[i] = type;
 }
 
 void		ConvScalar::setChar(char c)

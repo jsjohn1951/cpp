@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:03:50 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/20 20:22:29 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/21 12:28:41 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class ConvScalar
 		//! Attributes
 		char		*Lit;
 		bool		undefined;
+		bool		isPrint[4];
 		bool		Type[4];
 
 		//! Store Type Attributes
@@ -42,6 +43,7 @@ class ConvScalar
 
 		//! Setters
 		void		setType(bool type, int i);
+		void		setIsPrint(bool pr, int i);
 		void		setChar(char c);
 		void		setInt(int i);
 		void		setFloat(float f);
@@ -67,6 +69,7 @@ class ConvScalar
 
 		//! Public getters
 		bool		getType(int i) const;
+		bool		getIsPrint(int i) const;
 		char		getChar() const;
 		int			getInt() const;
 		float		getFloat() const;
