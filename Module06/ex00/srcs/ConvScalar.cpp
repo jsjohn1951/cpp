@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:07:13 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/21 16:52:02 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/21 18:09:13 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,11 @@ float	floatConv(char *getlit)
 
 bool	ConvScalar::errCheck(std::string lit)
 {
-	if (lit == "-inff" || lit == "+inff")
+	if (lit == "-inff" || lit == "+inff" || lit == "nanf" || lit == "-inf" || lit == "+inf" || lit == "nan")
+	{
+		this->setType(true, Float);
 		return (false);
+	}
 	if (std::count(lit.begin(), lit.end(), 'f') > 1 || (std::count(lit.begin(), lit.end(), 'f') == 1 && lit[lit.length() - 1] != 'f'))
 		return (true);
 	if (std::count(lit.begin(), lit.end(), '.') > 1)
@@ -103,7 +106,7 @@ void	ConvScalar::convert()
 
 	//! Int Conversion
 	this->setInt(static_cast<int>(this->getFloat()));
-	this->setIsPrint(true, Int);
+	(this->getInt() == INT_MIN ? this->setIsPrint(false, Int) : this->setIsPrint(true, Int));
 
 	//! Double Conversion
 	this->setDouble(this->getFloat());
