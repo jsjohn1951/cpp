@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:07:13 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/21 18:09:13 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/21 19:01:05 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ bool	ConvScalar::errCheck(std::string lit)
 		return (true);
 	if (std::count(lit.begin(), lit.end(), '.') > 1)
 		return (true);
-	(!std::count(lit.begin(), lit.end(), '.') ? this->setType(true, Int) : this->setType(true, Float));
+	(!std::count(lit.begin(), lit.end(), '.') || lit[lit.find('.') + 1] == '0' ? this->setType(true, Int) : this->setType(true, Float));
 	return (false);
 }
 
