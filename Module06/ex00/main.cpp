@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:39:01 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/21 12:03:09 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/21 14:04:01 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 		}
 		catch (const std::exception &e)
 		{
-			std::cout << "ex00: could not execute due to: " << e.what() << std::endl;
+			std::cout << "ConvScalar: could not execute due to: " << e.what() << std::endl;
 		}
 	}
 	//! Divider

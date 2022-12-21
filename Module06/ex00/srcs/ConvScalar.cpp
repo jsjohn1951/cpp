@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:07:13 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/21 12:49:34 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/21 14:03:17 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,25 @@ std::ostream	&operator<<(std::ostream &o, const ConvScalar &c)
 
 void	ConvScalar::convert()
 {
-	if (!this->getlit())
+	//** Check if string literal is empty
+	if (!static_cast<std::string>(this->getlit()).length())
 		throw (EmptyStr());
+
+	//! Float Conversion
 	this->setFloat(std::strtof(this->getlit(), NULL));
 	this->setIsPrint(true, Float);
+
+	//! Int Conversion
 	this->setInt(static_cast<int>(this->getFloat()));
 	this->setIsPrint(true, Int);
+
+	//! Double Conversion
 	this->setDouble(std::strtod(this->getlit(), NULL));
 	this->setIsPrint(true, Double);
-	this->setChar(this->getInt());
-	(this->getInt() <= 32 || this->getInt() >= 127 ? this->setIsPrint(false, Char) : this->setIsPrint(true, Char));
+
+	//! Char Conversion
+	(this->getInt() <= 31 || this->getInt() >= 127 || this->getInt() != this->getFloat() ? this->setIsPrint(false, Char) : this->setIsPrint(true, Char));
+	(this->getInt() < 0 || this->getInt() > 127 ? this->setChar(50) : this->setChar(this->getInt()));
 }
 
 //! End Member functions
