@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:07:13 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/21 14:03:17 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/21 16:52:02 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@
 ConvScalar::ConvScalar()
 {
 	std::cout << "ConvScalar: Default Constructor" << std::endl;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 2; i++)
 		this->setType(false, i);
+	for (int i = 0; i < 4; i++)
+		this->setIsPrint(false, i);
 }
 
 ConvScalar::ConvScalar(const ConvScalar &c) : Lit(c.Lit), undefined(c.undefined), C(c.getChar()), I(c.getInt()), F(c.getFloat()), D(c.getDouble())
 {
 	std::cout << "ConvScalar: Copy Constructor" << std::endl;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 2; i++)
 		this->setType(c.getType(i), i);
 	for (int i = 0; i < 4; i++)
 		this->setIsPrint(c.getIsPrint(i), i);
@@ -33,7 +35,7 @@ ConvScalar::ConvScalar(const ConvScalar &c) : Lit(c.Lit), undefined(c.undefined)
 ConvScalar::ConvScalar(char *lit) : Lit(lit), undefined(false), C(0), I(0), F(0), D(0)
 {
 	std::cout << "ConvScalar: Literal Constructor" << std::endl;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 2; i++)
 		this->setType(false, i);
 	for (int i = 0; i < 4; i++)
 		this->setIsPrint(false, i);
@@ -59,18 +61,6 @@ ConvScalar	&ConvScalar::operator=(const ConvScalar &c)
 	return (*this);
 }
 
-std::ostream	&operator<<(std::ostream &o, const ConvScalar &c)
-{
-	o << "char: ";
-	(c.getIsPrint(Char) ? o << c.getChar() << std::endl : (c.getChar() > 32 && c.getChar() < 127 ? o << "impossible" << std::endl : o << "Non displayable" << std::endl));
-	o << "int: ";
-	(c.getIsPrint(Int) ? o << c.getInt() << std::endl : o << "impossible" << std::endl);
-	o << "float: ";
-	(c.getIsPrint(Float) ? o << c.getFloat() << "f" << std::endl : o << "impossible" << std::endl);
-	o << "double: ";
-	(c.getIsPrint(Double) ? o << c.getDouble() : o << "impossible");
-	return (o);
-}
 
 //! End Operators
 
@@ -78,14 +68,37 @@ std::ostream	&operator<<(std::ostream &o, const ConvScalar &c)
 
 //! Member functions
 
+float	floatConv(char *getlit)
+{
+	if (static_cast<std::string>(getlit).length() == 1 && !std::isdigit(getlit[0]))
+		return (static_cast<float>(static_cast<int>(getlit[0])));
+	return (static_cast<float>(std::strtod(getlit, NULL)));
+}
+
+bool	ConvScalar::errCheck(std::string lit)
+{
+	if (lit == "-inff" || lit == "+inff")
+		return (false);
+	if (std::count(lit.begin(), lit.end(), 'f') > 1 || (std::count(lit.begin(), lit.end(), 'f') == 1 && lit[lit.length() - 1] != 'f'))
+		return (true);
+	if (std::count(lit.begin(), lit.end(), '.') > 1)
+		return (true);
+	(!std::count(lit.begin(), lit.end(), '.') ? this->setType(true, Int) : this->setType(true, Float));
+	return (false);
+}
+
 void	ConvScalar::convert()
 {
 	//** Check if string literal is empty
 	if (!static_cast<std::string>(this->getlit()).length())
 		throw (EmptyStr());
 
+	//! check for errors
+	if (errCheck(this->getlit()))
+		throw (InvalidInput());
+
 	//! Float Conversion
-	this->setFloat(std::strtof(this->getlit(), NULL));
+	this->setFloat(floatConv(this->getlit()));
 	this->setIsPrint(true, Float);
 
 	//! Int Conversion
@@ -93,12 +106,26 @@ void	ConvScalar::convert()
 	this->setIsPrint(true, Int);
 
 	//! Double Conversion
-	this->setDouble(std::strtod(this->getlit(), NULL));
+	this->setDouble(this->getFloat());
 	this->setIsPrint(true, Double);
 
 	//! Char Conversion
 	(this->getInt() <= 31 || this->getInt() >= 127 || this->getInt() != this->getFloat() ? this->setIsPrint(false, Char) : this->setIsPrint(true, Char));
 	(this->getInt() < 0 || this->getInt() > 127 ? this->setChar(50) : this->setChar(this->getInt()));
+}
+
+std::string	ConvScalar::rtnDotZeroF() const
+{
+	if (this->getType(Float))
+		return ("f");
+	return (".0f");
+}
+
+std::string	ConvScalar::rtnDotZeroD() const
+{
+	if (this->getType(Float))
+		return ("");
+	return (".0");
 }
 
 //! End Member functions

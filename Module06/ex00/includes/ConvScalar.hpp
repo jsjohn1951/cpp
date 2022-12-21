@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:03:50 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/21 12:28:41 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/21 16:51:17 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include <limits>
 # include "Exceptions.hpp"
 
-# define Char 0
-# define Int 1
-# define Float 2
+# define Int 0
+# define Float 1
+# define Char 2
 # define Double 3
 # define Default 4
 
@@ -30,7 +30,7 @@ class ConvScalar
 		char		*Lit;
 		bool		undefined;
 		bool		isPrint[4];
-		bool		Type[4];
+		bool		Type[2];
 
 		//! Store Type Attributes
 		char		C;
@@ -49,6 +49,9 @@ class ConvScalar
 		void		setFloat(float f);
 		void		setDouble(double d);
 
+		//! Checker
+		bool	errCheck(std::string lit);
+
 	public :
 		//! Constructors
 		ConvScalar();
@@ -63,6 +66,8 @@ class ConvScalar
 
 		//! Member functions
 		void		convert();
+		std::string	rtnDotZeroF() const;
+		std::string	rtnDotZeroD() const;
 
 		//! Public setter
 		void		setLit(char *lit);

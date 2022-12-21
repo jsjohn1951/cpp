@@ -6,7 +6,7 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/20 15:53:20 by wismith           #+#    #+#              #
-#    Updated: 2022/12/20 20:25:28 by wismith          ###   ########.fr        #
+#    Updated: 2022/12/21 15:05:06 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ OBJDIR = objects
 
 SRCS = main \
 	srcs/ConvScalar \
+	srcs/utils \
 
 OBJ = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(SRCS)))
 
