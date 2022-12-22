@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:03:50 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/22 16:53:52 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/22 20:17:20 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 # include <iostream>
 # include <climits>
 # include <algorithm>
+# include <sstream>
 # include "Exceptions.hpp"
 
 # define Int 0
-# define Float 1
+# define Double 1
 # define Char 2
-# define Double 3
+# define Float 3
 # define Default 4
 
 class ConvScalar
@@ -29,7 +30,6 @@ class ConvScalar
 	private :
 		//! Attributes
 		char		*Lit;
-		bool		undefined;
 		bool		isPrint[4];
 		bool		Type[2];
 
@@ -40,7 +40,7 @@ class ConvScalar
 		double		D;
 
 		//! Getters
-		char 		*getlit() const;
+		char 		*getLit() const;
 
 		//! Setters
 		void		setType(bool type, int i);
@@ -51,7 +51,14 @@ class ConvScalar
 		void		setDouble(double d);
 
 		//! Checker
-		bool	errCheck();
+		void		errCheck();
+		void		handleSciNote();
+		double		doubleConv();
+		int			intConv();
+
+		//! Converters
+		void		fromDouble();
+		void		fromInt();
 
 	public :
 		//! Constructors
