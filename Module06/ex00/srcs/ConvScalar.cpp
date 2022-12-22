@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:07:13 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/22 20:25:52 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/22 23:23:27 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,18 @@ ConvScalar::~ConvScalar()
 
 ConvScalar	&ConvScalar::operator=(const ConvScalar &c)
 {
-	(void) c;
 	std::cout << "ConvScalar: Assignment Operator overload" << std::endl;
+	if (this != &c)
+	{
+		this->setChar(c.getChar());
+		this->setInt(c.getInt());
+		this->setFloat(c.getFloat());
+		this->setDouble(c.getDouble());
+		for (int i = 0; i < 2; i++)
+			this->setType(c.getType(i), i);
+		for (int i = 0; i < 4; i++)
+			this->setIsPrint(c.getIsPrint(i), i);
+	}
 	return (*this);
 }
 
@@ -100,7 +110,7 @@ void	ConvScalar::handleSciNote()
 		if (!std::isdigit(lit[i]) && lit[i] != '.' && lit[i] != 'e' && lit[i] != 'f' && lit[i] != '+' && lit[i] != '-')
 			throw (InvalidInput());
 	}
-	if (count(lit.begin(), lit.end(), 'e') || (lit.length() > 1 && lit[lit.length() - 1] == 'e'))
+	if (count(lit.begin(), lit.end(), 'e'))
 		this->setType(true, Double);
 }
 
@@ -144,7 +154,7 @@ void	ConvScalar::fromInt()
 {
 	//! Int Conversion
 	this->setInt(this->intConv());
-	(this->getInt() == INT_MIN ? this->setIsPrint(false, Int) : this->setIsPrint(true, Int));
+	this->setIsPrint(true, Int);
 
 	//! Char Conversion
 	(this->getInt() <= 31 || this->getInt() >= 127 ? this->setIsPrint(false, Char) : this->setIsPrint(true, Char));
@@ -173,11 +183,15 @@ void	ConvScalar::convert()
 
 std::string	ConvScalar::rtnDotZeroF() const
 {
+	if (this->getType(Double) && this->getInt() == this->getDouble())
+		return (".0f");
 	return (this->getType(Double) ? "f" : ".0f");
 }
 
 std::string	ConvScalar::rtnDotZeroD() const
 {
+	if (this->getType(Double) && this->getInt() == this->getDouble())
+		return (".0");
 	return (this->getType(Double) ? "" : ".0");
 }
 
