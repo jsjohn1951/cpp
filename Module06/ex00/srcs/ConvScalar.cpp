@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:07:13 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/22 14:08:28 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/22 18:10:42 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ ConvScalar	&ConvScalar::operator=(const ConvScalar &c)
 	return (*this);
 }
 
-
 //! End Operators
 
 //** --------------------------------------------------------------------- **//
@@ -70,14 +69,33 @@ ConvScalar	&ConvScalar::operator=(const ConvScalar &c)
 
 float	floatConv(char *getlit)
 {
-	if (static_cast<std::string>(getlit).length() == 1 && !std::isdigit(getlit[0]))
-		return (static_cast<float>(static_cast<int>(getlit[0])));
-	return (static_cast<float>(strtod(getlit, NULL)));
+	std::string lit = static_cast<std::string>(getlit);
+
+	if ((lit.length() > 1 && lit[lit.length() - 1] == 'e') || (lit.length() > 2 && lit[lit.length() - 1] == 'f' && lit[lit.length() - 2] == 'e') || (lit.length() > 1 && lit[0] == 'e'))
+		return (static_cast<float>(strtod("nan", NULL)));
+	return (static_cast<std::string>(getlit).length() == 1 && !std::isdigit(getlit[0]) ? static_cast<float>(static_cast<int>(getlit[0])) : static_cast<float>(strtod(getlit, NULL)));
 }
 
-bool	ConvScalar::errCheck(std::string lit)
+bool	ConvScalar::errCheck()
 {
+	std::string lit = static_cast<std::string>(this->getlit());
+
 	if (lit == "-inff" || lit == "+inff" || lit == "nanf" || lit == "-inf" || lit == "+inf" || lit == "nan")
+	{
+		this->setType(true, Float);
+		return (false);
+	}
+	if (count(lit.begin(), lit.end(), 'e') > 1)
+		return (true);
+	if (lit.length() > 1)
+	{
+		for (unsigned long i = 0; i < lit.length(); i++)
+		{
+			if (!std::isdigit(lit[i]) && lit[i] != '.' && lit[i] != 'e' && lit[i] != 'f')
+				return (true);
+		}
+	}
+	if (lit.length() > 1 && lit[lit.length() - 1] == 'e')
 	{
 		this->setType(true, Float);
 		return (false);
@@ -97,7 +115,7 @@ void	ConvScalar::convert()
 		throw (EmptyStr());
 
 	//! check for errors
-	if (errCheck(this->getlit()))
+	if (errCheck())
 		throw (InvalidInput());
 
 	//! Float Conversion
@@ -119,16 +137,12 @@ void	ConvScalar::convert()
 
 std::string	ConvScalar::rtnDotZeroF() const
 {
-	if (this->getType(Float))
-		return ("f");
-	return (".0f");
+	return (this->getType(Float) ? "f" : ".0f");
 }
 
 std::string	ConvScalar::rtnDotZeroD() const
 {
-	if (this->getType(Float))
-		return ("");
-	return (".0");
+	return (this->getType(Float) ? "" : ".0");
 }
 
 //! End Member functions

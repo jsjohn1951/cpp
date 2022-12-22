@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:03:50 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/22 14:09:14 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/22 16:53:52 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ class ConvScalar
 		void		setDouble(double d);
 
 		//! Checker
-		bool	errCheck(std::string lit);
+		bool	errCheck();
 
 	public :
 		//! Constructors
