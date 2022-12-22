@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:03:50 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/21 16:51:17 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/22 14:09:14 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define CONVSCALAR
 
 # include <iostream>
-# include <limits>
+# include <climits>
+# include <algorithm>
 # include "Exceptions.hpp"
 
 # define Int 0

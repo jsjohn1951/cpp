@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:07:13 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/21 19:01:05 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/22 14:08:28 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ float	floatConv(char *getlit)
 {
 	if (static_cast<std::string>(getlit).length() == 1 && !std::isdigit(getlit[0]))
 		return (static_cast<float>(static_cast<int>(getlit[0])));
-	return (static_cast<float>(std::strtod(getlit, NULL)));
+	return (static_cast<float>(strtod(getlit, NULL)));
 }
 
 bool	ConvScalar::errCheck(std::string lit)
@@ -82,11 +82,11 @@ bool	ConvScalar::errCheck(std::string lit)
 		this->setType(true, Float);
 		return (false);
 	}
-	if (std::count(lit.begin(), lit.end(), 'f') > 1 || (std::count(lit.begin(), lit.end(), 'f') == 1 && lit[lit.length() - 1] != 'f'))
+	if (count(lit.begin(), lit.end(), 'f') > 1 || (count(lit.begin(), lit.end(), 'f') == 1 && lit[lit.length() - 1] != 'f'))
 		return (true);
-	if (std::count(lit.begin(), lit.end(), '.') > 1)
+	if (count(lit.begin(), lit.end(), '.') > 1)
 		return (true);
-	(!std::count(lit.begin(), lit.end(), '.') || lit[lit.find('.') + 1] == '0' ? this->setType(true, Int) : this->setType(true, Float));
+	(!count(lit.begin(), lit.end(), '.') || lit[lit.find('.') + 1] == '0' ? this->setType(true, Int) : this->setType(true, Float));
 	return (false);
 }
 
