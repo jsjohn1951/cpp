@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:07:13 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/22 23:23:27 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/23 10:22:54 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ConvScalar::ConvScalar()
 {
 	std::cout << "ConvScalar: Default Constructor" << std::endl;
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 4; i++)
 		this->setType(false, i);
 	for (int i = 0; i < 4; i++)
 		this->setIsPrint(false, i);
@@ -26,7 +26,7 @@ ConvScalar::ConvScalar()
 ConvScalar::ConvScalar(const ConvScalar &c) : Lit(c.Lit), C(c.getChar()), I(c.getInt()), F(c.getFloat()), D(c.getDouble())
 {
 	std::cout << "ConvScalar: Copy Constructor" << std::endl;
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 4; i++)
 		this->setType(c.getType(i), i);
 	for (int i = 0; i < 4; i++)
 		this->setIsPrint(c.getIsPrint(i), i);
@@ -35,7 +35,7 @@ ConvScalar::ConvScalar(const ConvScalar &c) : Lit(c.Lit), C(c.getChar()), I(c.ge
 ConvScalar::ConvScalar(char *lit) : Lit(lit), C(0), I(0), F(0), D(0)
 {
 	std::cout << "ConvScalar: Literal Constructor" << std::endl;
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 4; i++)
 		this->setType(false, i);
 	for (int i = 0; i < 4; i++)
 		this->setIsPrint(false, i);
@@ -63,7 +63,7 @@ ConvScalar	&ConvScalar::operator=(const ConvScalar &c)
 		this->setInt(c.getInt());
 		this->setFloat(c.getFloat());
 		this->setDouble(c.getDouble());
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < 4; i++)
 			this->setType(c.getType(i), i);
 		for (int i = 0; i < 4; i++)
 			this->setIsPrint(c.getIsPrint(i), i);
@@ -110,8 +110,6 @@ void	ConvScalar::handleSciNote()
 		if (!std::isdigit(lit[i]) && lit[i] != '.' && lit[i] != 'e' && lit[i] != 'f' && lit[i] != '+' && lit[i] != '-')
 			throw (InvalidInput());
 	}
-	if (count(lit.begin(), lit.end(), 'e'))
-		this->setType(true, Double);
 }
 
 void	ConvScalar::errCheck()
@@ -128,7 +126,9 @@ void	ConvScalar::errCheck()
 		throw (InvalidInput());
 	if (count(lit.begin(), lit.end(), '.') > 1)
 		throw (InvalidInput());
-	(!count(lit.begin(), lit.end(), '.') || lit[lit.find('.') + 1] == '0' ? this->setType(true, Int) : this->setType(true, Double));
+	if (lit.length() == 1 && lit[0] >= 32 && lit[0] <= 126)
+		return (this->setType(true, Char));
+	((!count(lit.begin(), lit.end(), '.') || lit[lit.find('.') + 1] == '0') && !(lit.length() > 1 && count(lit.begin(), lit.end(), 'e')) ? this->setType(true, Int) : this->setType(true, Double));
 }
 
 void	ConvScalar::fromDouble()
@@ -138,15 +138,18 @@ void	ConvScalar::fromDouble()
 	this->setIsPrint(true, Double);
 
 	//! Float Conversion
-	this->setFloat(static_cast<float>(this->getDouble()));
-	this->setIsPrint(true, Float);
+	if (this->getDouble() <= FLT_MAX)
+	{
+		this->setFloat(static_cast<float>(this->getDouble()));
+		this->setIsPrint(true, Float);
+	}
 
 	//! Int Conversion
 	this->setInt(static_cast<int>(this->getDouble()));
 	(this->getInt() == INT_MIN ? this->setIsPrint(false, Int) : this->setIsPrint(true, Int));
 
 	//! Char Conversion
-	(this->getInt() <= 31 || this->getInt() >= 127 || this->getInt() != this->getFloat() ? this->setIsPrint(false, Char) : this->setIsPrint(true, Char));
+	(this->getInt() <= 31 || this->getInt() >= 127 || this->getInt() != this->getDouble() ? this->setIsPrint(false, Char) : this->setIsPrint(true, Char));
 	(this->getInt() < 0 || this->getInt() > 127 ? this->setChar(50) : this->setChar(static_cast<char>(static_cast<int>(this->getDouble()))));
 }
 
@@ -169,6 +172,25 @@ void	ConvScalar::fromInt()
 	this->setIsPrint(true, Float);
 }
 
+void	ConvScalar::fromChar()
+{
+	//! Char Conversion
+	this->setChar(static_cast<char>(this->getLit()[0]));
+	this->setIsPrint(true, Char);
+
+	//! Int Conversion
+	this->setInt(static_cast<int>(this->getChar()));
+	this->setIsPrint(true, Int);
+
+	//! Double Conversion
+	this->setDouble(static_cast<double>(this->getInt()));
+	this->setIsPrint(true, Double);
+
+	//! Float Conversion
+	this->setFloat(static_cast<float>(this->getInt()));
+	this->setIsPrint(true, Float);
+}
+
 void	ConvScalar::convert()
 {
 	//! check for errors
@@ -176,9 +198,11 @@ void	ConvScalar::convert()
 
 	//! Convert
 	if (this->getType(Double))
-		fromDouble();
+		this->fromDouble();
+	else if (this->getType(Char))
+		this->fromChar();
 	else if (this->getType(Int))
-		fromInt();
+		this->fromInt();
 }
 
 std::string	ConvScalar::rtnDotZeroF() const

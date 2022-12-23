@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:03:50 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/22 20:17:20 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/23 10:20:37 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <climits>
+# include <cfloat>
 # include <algorithm>
 # include <sstream>
 # include "Exceptions.hpp"
@@ -31,7 +32,7 @@ class ConvScalar
 		//! Attributes
 		char		*Lit;
 		bool		isPrint[4];
-		bool		Type[2];
+		bool		Type[4];
 
 		//! Store Type Attributes
 		char		C;
@@ -59,6 +60,7 @@ class ConvScalar
 		//! Converters
 		void		fromDouble();
 		void		fromInt();
+		void		fromChar();
 
 	public :
 		//! Constructors
