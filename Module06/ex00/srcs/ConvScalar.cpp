@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:07:13 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/23 11:20:22 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/23 11:48:03 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,13 @@ void	ConvScalar::errCheck()
 		throw (InvalidInput());
 	if (count(lit.begin(), lit.end(), '.') > 1)
 		throw (InvalidInput());
-	if (lit.length() == 1 && lit[0] >= 32 && lit[0] <= 126)
+}
+
+void	ConvScalar::findType()
+{
+	std::string lit = static_cast<std::string>(this->getLit());
+
+	if (lit.length() == 1 && lit[0] >= 32 && lit[0] <= 126 && !(lit[0] >= '0' && lit[0] <= '9'))
 		return (this->setType(true, Char));
 	if (count(lit.begin(), lit.end(), 'f'))
 		return (this->setType(true, Float));
@@ -224,7 +230,10 @@ void	ConvScalar::convert()
 	int	i = 0;
 
 	//! check for errors
-	errCheck();
+	this->errCheck();
+
+	//! find Str Type
+	this->findType();
 
 	//! Convert
 	for(; i < 4 && !this->getType(i); i++)
@@ -248,16 +257,12 @@ void	ConvScalar::convert()
 
 std::string	ConvScalar::rtnDotZeroF() const
 {
-	if (this->getType(Double) && this->getInt() == this->getDouble())
-		return (".0f");
-	return (this->getType(Float) || this->getType(Double) ? "f" : ".0f");
+	return (this->getInt() == this->getDouble() ? ".0f" : "f");
 }
 
 std::string	ConvScalar::rtnDotZeroD() const
 {
-	if (this->getType(Double) && this->getInt() == this->getDouble())
-		return (".0");
-	return (this->getType(Float) || this->getType(Double) ? "" : ".0");
+	return (this->getInt() == this->getDouble() ? ".0" : "");
 }
 
 //! End Member functions
