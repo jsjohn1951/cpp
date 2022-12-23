@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:07:13 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/23 10:22:54 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/23 11:20:22 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,9 @@ void	ConvScalar::errCheck()
 	//** Check if string literal is empty
 	if (!lit.length())
 		throw (EmptyStr());
-	if (lit == "-inff" || lit == "+inff" || lit == "nanf" || lit == "-inf" || lit == "+inf" || lit == "nan")
+	if (lit == "-inff" || lit == "+inff" || lit == "nanf")
+		return (this->setType(true, Float));
+	if (lit == "-inf" || lit == "+inf" || lit == "nan")
 		return (this->setType(true, Double));
 	this->handleSciNote();
 	if (count(lit.begin(), lit.end(), 'f') > 1 || (count(lit.begin(), lit.end(), 'f') == 1 && lit[lit.length() - 1] != 'f'))
@@ -128,7 +130,11 @@ void	ConvScalar::errCheck()
 		throw (InvalidInput());
 	if (lit.length() == 1 && lit[0] >= 32 && lit[0] <= 126)
 		return (this->setType(true, Char));
-	((!count(lit.begin(), lit.end(), '.') || lit[lit.find('.') + 1] == '0') && !(lit.length() > 1 && count(lit.begin(), lit.end(), 'e')) ? this->setType(true, Int) : this->setType(true, Double));
+	if (count(lit.begin(), lit.end(), 'f'))
+		return (this->setType(true, Float));
+	if (count(lit.begin(), lit.end(), '.') || count(lit.begin(), lit.end(), 'e'))
+		return (this->setType(true, Double));
+	return (this->setType(true, Int));
 }
 
 void	ConvScalar::fromDouble()
@@ -138,19 +144,41 @@ void	ConvScalar::fromDouble()
 	this->setIsPrint(true, Double);
 
 	//! Float Conversion
-	if (this->getDouble() <= FLT_MAX)
-	{
-		this->setFloat(static_cast<float>(this->getDouble()));
-		this->setIsPrint(true, Float);
-	}
+	this->setFloat(static_cast<float>(this->getDouble()));
+	this->setIsPrint(true, Float);
 
 	//! Int Conversion
-	this->setInt(static_cast<int>(this->getDouble()));
-	(this->getInt() == INT_MIN ? this->setIsPrint(false, Int) : this->setIsPrint(true, Int));
+	if (this->getDouble() <= INT_MAX && this->getDouble() >= INT_MIN)
+	{
+		this->setInt(static_cast<int>(this->getDouble()));
+		this->setIsPrint(true, Int);
+	}
 
 	//! Char Conversion
 	(this->getInt() <= 31 || this->getInt() >= 127 || this->getInt() != this->getDouble() ? this->setIsPrint(false, Char) : this->setIsPrint(true, Char));
-	(this->getInt() < 0 || this->getInt() > 127 ? this->setChar(50) : this->setChar(static_cast<char>(static_cast<int>(this->getDouble()))));
+	this->setChar(static_cast<char>(static_cast<int>(this->getInt())));
+}
+
+void	ConvScalar::fromFloat()
+{
+	//! Float Conversion
+	this->setFloat(static_cast<float>(doubleConv()));
+	this->setIsPrint(true, Float);
+
+	//! Double Conversion
+	this->setDouble(static_cast<double>(this->getFloat()));
+	this->setIsPrint(true, Double);
+
+	//! Int Conversion
+	if (this->getDouble() <= INT_MAX && this->getDouble() >= INT_MIN)
+	{
+		this->setInt(static_cast<int>(this->getDouble()));
+		this->setIsPrint(true, Int);
+	}
+
+	//! Char Conversion
+	(this->getInt() <= 31 || this->getInt() >= 127 || this->getInt() != this->getDouble() ? this->setIsPrint(false, Char) : this->setIsPrint(true, Char));
+	this->setChar(static_cast<char>(static_cast<int>(this->getInt())));
 }
 
 void	ConvScalar::fromInt()
@@ -193,30 +221,43 @@ void	ConvScalar::fromChar()
 
 void	ConvScalar::convert()
 {
+	int	i = 0;
+
 	//! check for errors
 	errCheck();
 
 	//! Convert
-	if (this->getType(Double))
-		this->fromDouble();
-	else if (this->getType(Char))
-		this->fromChar();
-	else if (this->getType(Int))
-		this->fromInt();
+	for(; i < 4 && !this->getType(i); i++)
+		;
+	switch (i)
+	{
+		case Int :
+			this->fromInt();
+		break ;
+		case Char :
+			this->fromChar();
+		break ;
+		case Float :
+			this->fromFloat();
+		break ;
+		case Double :
+			this->fromDouble();
+		break ;
+	};
 }
 
 std::string	ConvScalar::rtnDotZeroF() const
 {
 	if (this->getType(Double) && this->getInt() == this->getDouble())
 		return (".0f");
-	return (this->getType(Double) ? "f" : ".0f");
+	return (this->getType(Float) || this->getType(Double) ? "f" : ".0f");
 }
 
 std::string	ConvScalar::rtnDotZeroD() const
 {
 	if (this->getType(Double) && this->getInt() == this->getDouble())
 		return (".0");
-	return (this->getType(Double) ? "" : ".0");
+	return (this->getType(Float) || this->getType(Double) ? "" : ".0");
 }
 
 //! End Member functions

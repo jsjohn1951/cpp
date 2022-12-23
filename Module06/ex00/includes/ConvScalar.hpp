@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:03:50 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/23 10:20:37 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/23 10:59:28 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ class ConvScalar
 
 		//! Converters
 		void		fromDouble();
+		void		fromFloat();
 		void		fromInt();
 		void		fromChar();
 
