@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:07:13 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/23 11:48:03 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/23 11:57:29 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ double	ConvScalar::doubleConv()
 		this->setType(true, Double);
 		return (strtod("nan", NULL));
 	}
-	return (lit.length() == 1 && !std::isdigit(lit[0]) ? static_cast<double>(static_cast<int>(lit[0])) : strtod(this->getLit(), NULL));
+	return (strtod(this->getLit(), NULL));
 }
 
 int	ConvScalar::intConv()
@@ -134,6 +134,8 @@ void	ConvScalar::findType()
 {
 	std::string lit = static_cast<std::string>(this->getLit());
 
+	if (this->getType(Double) || this->getType(Float))
+		return ;
 	if (lit.length() == 1 && lit[0] >= 32 && lit[0] <= 126 && !(lit[0] >= '0' && lit[0] <= '9'))
 		return (this->setType(true, Char));
 	if (count(lit.begin(), lit.end(), 'f'))
