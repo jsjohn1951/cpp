@@ -6,35 +6,25 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:53:21 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/24 17:58:53 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/24 18:02:59 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Data.hpp"
 
-// Base	*generate(void)
-// {
-// 	int	r = rand();
-// 	switch (r)
-// 	{
-// 		case 0 :
-// 			return (new A);
-// 		break ;
-// 		case 1 :
-// 			return (new B);
-// 		break ;
-// 	};
-// 	return (new C);
-// }
-
-intptr_t	serialize(Base* ptr)
+Base	*generate(void)
 {
-	return (reinterpret_cast<intptr_t>(ptr));
-}
-
-Base* deserialize(uintptr_t raw)
-{
-	return (reinterpret_cast<Base*>(raw));
+	int	r = rand();
+	switch (r)
+	{
+		case 0 :
+			return (new A);
+		break ;
+		case 1 :
+			return (new B);
+		break ;
+	};
+	return (new C);
 }
 
 void	identify(Base *p)
@@ -94,10 +84,11 @@ void	identify(Base &p)
 
 int	main(void)
 {
-	// Base	*b = generate();
-	Base *b = new B;
+	Base	*b = generate();
+
 	identify(b);
 	identify(*b);
+
 	delete b;
 	return (0);
 }
