@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 21:50:06 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/23 22:45:30 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/24 13:42:39 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,38 +30,42 @@ int	main(void)
 		Data	data;
 		Data	*d = &data;
 		Data	*rtn;
-	
+
 		//! Init members
 		data.Name = "John";
 		data.age = 24;
 		data.dataOfBirth = 28061998;
-	
+
 		//! test functions
 		rtn = deserialize(serialize(d));
-		std::cout << "Comparison result:";
-		(rtn == d ? std::cout << " Pass!" << std::endl : std::cout << " Failed!" << std::endl);
-		
-		//! Divider
-		std::cout << std::endl;
+		std::cout << "Comparison result:\t\t";
+		std::cout << (rtn == d ? "\x1B[32mPass!" : "\x1B[31mFailed!") << std::endl;
+		std::cout << "\x1B[0m";
 
 		//! Outcome:
-		std::cout << "Name: " << rtn->Name << std::endl;
-		std::cout << "Age: " << rtn->age << std::endl;
-		std::cout << "DoB: " << rtn->dataOfBirth << std::endl;
+		std::cout << "rtn * Name: " << rtn->Name << "\tdata Name: " << data.Name << std::endl;
+		std::cout << "rtn * Age: " << rtn->age << "\t\tdata Age: " << data.age << std::endl;
+		std::cout << "rtn * DoB: " << rtn->dataOfBirth << "\tdata DoB: " << data.dataOfBirth << std::endl;
 
+		//! Divider
+		std::cout << std::endl;
 		//! Divider
 		std::cout << std::endl;
 
 		//! change age using rtn ptr, and compare
 		std::cout << "Incrementing age by 10 using rtn ptr" << std::endl;
 		rtn->age += 10;
-	
+
 		//! Divider
 		std::cout << std::endl;
-	
+		//! Divider
+		std::cout << std::endl;
+
 		//! Compare age
-		std::cout << "Comparison:" << std::endl;
-		std::cout << "rtn * age: " << rtn->age << "\tdata age: " << data.age << std::endl;
+		std::cout << "Comparison result:\t\t";
+		std::cout << (rtn->age == data.age ? "\x1B[32mPass!" : "\x1B[31mFailed!") << std::endl;
+		std::cout << "\x1B[0m";
+		std::cout << "rtn * age: " << rtn->age << "\t\tdata age: " << data.age << std::endl;
 	}
 	std::cout << std::endl;
 	return (0);
