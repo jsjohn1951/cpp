@@ -6,11 +6,16 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:53:21 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/25 10:36:01 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/25 17:24:36 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Data.hpp"
+
+const char *Exception::what() const throw()
+{
+	return ("Not equal!");
+}
 
 Base	*generate(void)
 {
@@ -91,9 +96,9 @@ int	main(void)
 	{
 		std::cout << std::endl;
 		Base *b = generate();
-		std::cout << i << ") pointer:\t"; 
+		std::cout << i << ") pointer:\t";
 		identify(*b);
-		std::cout << i << ") reference:\t"; 
+		std::cout << i << ") reference:\t";
 		identify(b);
 		delete b;
 		std::cout << "\x1B[0m";

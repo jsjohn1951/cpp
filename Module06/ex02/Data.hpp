@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:56:16 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/24 17:57:57 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/25 17:24:42 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ class C : public Base {};
 class Exception : public std::exception
 {
 	public:
-		const char *what() const throw()
-		{
-			return ("Not equal!");
-		}
+		const char *what() const throw();
 };
 
 #endif
