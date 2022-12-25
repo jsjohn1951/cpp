@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 22:11:36 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/25 22:31:21 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/25 22:44:33 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(void)
 	//! test 1
 	std::cout << std::endl;
 	std::cout << "-----------" << std::endl;
-	std::cout << "| Test 1: |" << std::endl;
+	std::cout << "| \x1B[32mTest 1 \x1B[0m |" << std::endl;
 	std::cout << "-----------" << std::endl;
 	{
 		//! init array
@@ -35,7 +35,7 @@ int	main(void)
 		std::cout << std::endl;
 	}
 	std::cout << "-----------" << std::endl;
-	std::cout << "| Test 2: |" << std::endl;
+	std::cout << "| \x1B[31mTest 2 \x1B[0m |" << std::endl;
 	std::cout << "-----------" << std::endl;
 	{
 		//! init array
@@ -47,6 +47,24 @@ int	main(void)
 		//! Call to template function
 		std::cout << "result :\t";
 		::iter(arr, 2, ::printIndex);
+
+		//! Divider
+		std::cout << std::endl;
+		std::cout << std::endl;
+	}
+	std::cout << "-----------" << std::endl;
+	std::cout << "| \x1B[35mTest 3 \x1B[0m |" << std::endl;
+	std::cout << "-----------" << std::endl;
+	{
+		//! init array
+		float	arr[] = {0.5f, 23.4f, 42.0f};
+
+		//! Divider
+		std::cout << std::endl << "\t";
+
+		//! Call to template function
+		std::cout << "result :\t";
+		::iter(arr, 3, ::printIndex);
 
 		//! Divider
 		std::cout << std::endl;
