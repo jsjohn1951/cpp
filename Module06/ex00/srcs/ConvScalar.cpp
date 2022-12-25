@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:07:13 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/25 13:01:59 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/25 17:15:45 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 //! Constructors
 
-ConvScalar::ConvScalar()
+ConvScalar::ConvScalar() : C(0), I(0), F(0), D(0)
 {
 	std::cout << "ConvScalar: Default Constructor" << std::endl;
+	std::string	lit = "1";
+	this->setLit(const_cast<char *>(lit.c_str()));
 	for (int i = 0; i < 4; i++)
 		this->setType(false, i);
 	for (int i = 0; i < 4; i++)
 		this->setIsPrint(false, i);
 }
 
-ConvScalar::ConvScalar(const ConvScalar &c) : Lit(c.Lit), C(c.getChar()), I(c.getInt()), F(c.getFloat()), D(c.getDouble())
+ConvScalar::ConvScalar(const ConvScalar &c) : Lit(c.getLit()), C(c.getChar()), I(c.getInt()), F(c.getFloat()), D(c.getDouble())
 {
 	std::cout << "ConvScalar: Copy Constructor" << std::endl;
 	for (int i = 0; i < 4; i++)
@@ -156,10 +158,11 @@ void	ConvScalar::fromDouble()
 			//! Int Conversion
 			this->setInt(static_cast<int>(this->getDouble()));
 			this->setIsPrint(true, Int);
-	
+
 			//! Char Conversion
-			(this->getFloat() == this->getInt() && this->getFloat() > 0 && this->getFloat() < 128 ? this->setIsPrint(true, Char) : this->setIsPrint(false, Char));
-			this->setChar(static_cast<char>(static_cast<int>(this->getInt())));
+			(this->getFloat() == this->getInt() && this->getFloat() >= 0 && this->getFloat() < 128 ? this->setIsPrint(true, Char) : this->setIsPrint(false, Char));
+			if (this->getDouble() >= 0 && this->getDouble() <= 127)
+				this->setChar(static_cast<char>(static_cast<int>(this->getDouble())));
 		}
 	}
 }
@@ -182,10 +185,11 @@ void	ConvScalar::fromFloat()
 			//! Int Conversion
 			this->setInt(static_cast<int>(this->getFloat()));
 			this->setIsPrint(true, Int);
-		
+
 			//! Char Conversion
 			(this->getFloat() == this->getInt() && this->getFloat() > 0 && this->getFloat() < 128 ? this->setIsPrint(true, Char) : this->setIsPrint(false, Char));
-			this->setChar(static_cast<char>(static_cast<int>(this->getInt())));
+			if (this->getFloat() >= 0 && this->getFloat() <= 127)
+				this->setChar(static_cast<char>(static_cast<int>(this->getFloat())));
 		}
 	}
 }
