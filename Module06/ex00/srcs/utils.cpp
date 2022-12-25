@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 15:05:11 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/22 20:32:19 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/25 12:41:14 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@
 std::ostream	&operator<<(std::ostream &o, const ConvScalar &c)
 {
 	o << "char: ";
-	(c.getIsPrint(Char) ? o << "'" << c.getChar() << "'" << std::endl : (c.getInt() < 0 || c.getInt() > 127 ? o << "impossible" << std::endl : o << "Non displayable" << std::endl));
+	(c.getIsPrint(Char) ? 
+	(c.getInt() >= 32 && c.getInt() < 127 ? 
+	o << "'" << c.getChar() << "'" << std::endl : o << "Non displayable" << std::endl) 
+	: o << "impossible" << std::endl);
 	o << "int: ";
 	(c.getIsPrint(Int) ? o << c.getInt() << std::endl : o << "impossible" << std::endl);
 	o << "float: ";

@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 16:03:50 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/23 11:32:45 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/25 12:17:56 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,12 @@ class ConvScalar
 		void		errCheck();
 		void		handleSciNote();
 		void		findType();
+		bool		isPseudoDouble();
+		bool		isPseudoFloat();
 
 		//! Converters
 		double		doubleConv();
-		int			intConv();
+		long long	intConv();
 		void		fromDouble();
 		void		fromFloat();
 		void		fromInt();
