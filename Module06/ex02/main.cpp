@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:53:21 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/24 18:02:59 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/25 10:36:01 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 Base	*generate(void)
 {
-	int	r = rand();
+	int	r = (rand() % 3);
 	switch (r)
 	{
 		case 0 :
+			std::cout << "\x1B[31m";
 			return (new A);
 		break ;
 		case 1 :
+			std::cout << "\x1B[32m";
 			return (new B);
 		break ;
 	};
+	std::cout << "\x1B[35m";
 	return (new C);
 }
 
@@ -84,11 +87,17 @@ void	identify(Base &p)
 
 int	main(void)
 {
-	Base	*b = generate();
-
-	identify(b);
-	identify(*b);
-
-	delete b;
+	for (int i = 0; i < 8; i++)
+	{
+		std::cout << std::endl;
+		Base *b = generate();
+		std::cout << i << ") pointer:\t"; 
+		identify(*b);
+		std::cout << i << ") reference:\t"; 
+		identify(b);
+		delete b;
+		std::cout << "\x1B[0m";
+	}
+	std::cout << std::endl;
 	return (0);
 }
