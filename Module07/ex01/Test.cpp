@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:11:12 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/27 16:39:17 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/27 17:11:03 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ std::string		Test::getName() const
 
 //! External Operators
 
-std::ostream	&operator<<(std::ostream &o, Test &t)
+std::ostream	&operator<<(std::ostream &o, const Test &t)
 {
 	o << "Name: " << t.getName() << std::endl;
 	o << "Age: " << t.getAge() << std::endl;

@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:06:04 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/27 16:37:53 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/27 17:10:54 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ class Test
 		unsigned int	getAge() const;
 };
 
-std::ostream	&operator<<(std::ostream &o, Test &t);
+std::ostream	&operator<<(std::ostream &o, const Test &t);
 
 #endif
