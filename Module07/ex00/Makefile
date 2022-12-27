@@ -6,13 +6,13 @@
 #    By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/25 18:07:17 by wismith           #+#    #+#              #
-#    Updated: 2022/12/25 18:10:10 by wismith          ###   ########.fr        #
+#    Updated: 2022/12/27 17:59:38 by wismith          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex00
 
-SRCS = main.cpp
+SRCS = main.cpp Test.cpp
 
 CXX = c++
 
