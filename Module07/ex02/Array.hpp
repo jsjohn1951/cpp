@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 22:48:09 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/27 13:21:08 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/27 15:13:49 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ class Array
 		{
 			std::cout << "Array Default Constructor" << std::endl;
 		}
-		
+
 		Array(unsigned int n) : Size(n), var(new T[n]), access(false)
 		{
 			std::cout << "Array 'n' Constructor" << std::endl;
 		}
-		
+
 		Array(const Array &a) :  Size(a.Size), var(new T[a.Size]), access(a.access)
 		{
 			std::cout << "Array Copy Constructor" << std::endl;
@@ -75,7 +75,7 @@ class Array
 		T	&operator[](long int i)
 		{
 			// std::cout << "[] operator" << std::endl;
-			if (i >= static_cast<int>(this->size()) || i < 0)
+			if (i >= static_cast<long int>(this->size()) || i < 0)
 				throw (outOfBounds());
 			this->access = true;
 			return (var[i]);
