@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 17:06:40 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/29 17:47:16 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/30 17:11:09 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	Span::addNumber(int num)
 
 int		Span::longestSpan()
 {
+	if (this->N <= 1)
+		throw (NoSpanFound());
 	std::vector<int>::iterator start = this->vec.begin();
 	std::vector<int>::iterator end = this->vec.end() - 1;
 	std::sort(this->vec.begin(), this->vec.end());
@@ -74,6 +76,8 @@ int		Span::longestSpan()
 
 int		Span::shortestSpan()
 {
+	if (this->N <= 1)
+		throw (NoSpanFound());
 	int		sspan = this->longestSpan();
 	std::vector<int>::iterator start = this->vec.begin();
 	for (; start + 1 < this->vec.end(); start++)

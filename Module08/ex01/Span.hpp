@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:52:18 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/29 17:49:39 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/30 17:12:02 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 class Span
 {
 	private :
-		//! Private exception
+		//! Private exceptions
 		class	OutOfBounds : public std::exception
 		{
 			public :
@@ -31,12 +31,22 @@ class Span
 				}
 		};
 
+		class	NoSpanFound : public std::exception
+		{
+			public :
+				const char *what() const throw()
+				{
+					return ("No Span Can be found!");
+				}
+		};
+
 		//! Private Attributes
 		std::vector <int> vec;
 		unsigned int	N;
 
 		//! Private Default Constructor
 		Span();
+
 	public :
 		//! constructors
 		Span(unsigned int n);
