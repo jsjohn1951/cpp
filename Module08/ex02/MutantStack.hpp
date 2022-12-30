@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 19:41:09 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/30 01:35:10 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/30 15:50:29 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ class MutantStack : public std::stack <T>
 		{
 			std::cout << "Default Constructor" << std::endl;
 		}
-		MutantStack(const MutantStack &m)
+		
+		MutantStack(MutantStack &m)
 		{
 			std::cout << "Copy Constructor" << std::endl;
-			*this = m;
+			if (this != &m)
+				*this = m;
 		}
 
 		//! Destructor
@@ -46,10 +48,21 @@ class MutantStack : public std::stack <T>
 		}
 
 		//! Operators
-		MutantStack	&operator=(const MutantStack &m)
+		MutantStack	&operator=(MutantStack &m)
 		{
+			std::stack<T> s;
 			std::cout << "Copy Assignment Operator Overload" << std::endl;
-			*this = m;
+			while (this != &m && m.size())
+			{
+				s.push(m.top());
+				m.pop();
+			}
+			while (this != &m && s.size())
+			{
+				m.push(s.top());
+				this->push(s.top());
+				s.pop();
+			}
 			return (*this);
 		}
 
