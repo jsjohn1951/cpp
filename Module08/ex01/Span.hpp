@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:52:18 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/30 17:12:02 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/30 21:09:56 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 # include <iostream>
 # include <vector>
-# include<iterator>
+# include <iterator>
 # include <algorithm>
+# include <cstdlib>
 
 class Span
 {
@@ -43,6 +44,7 @@ class Span
 		//! Private Attributes
 		std::vector <int> vec;
 		unsigned int	N;
+		unsigned int	nPushd;
 
 		//! Private Default Constructor
 		Span();
@@ -51,6 +53,7 @@ class Span
 		//! constructors
 		Span(unsigned int n);
 		Span(const Span &s);
+		Span(std::vector<int>::iterator start, std::vector<int>::iterator end);
 
 		//! Destructors
 		~Span();
@@ -60,6 +63,7 @@ class Span
 
 		//! Member functions
 		void	addNumber(int num);
+		void	injectRange(std::vector<int>::iterator start, std::vector<int>::iterator end);
 		int		shortestSpan();
 		int		longestSpan();
 };
