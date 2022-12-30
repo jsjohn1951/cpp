@@ -6,7 +6,7 @@
 /*   By: wismith <wismith@42ABUDHABI.AE>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 19:41:09 by wismith           #+#    #+#             */
-/*   Updated: 2022/12/30 15:50:29 by wismith          ###   ########.fr       */
+/*   Updated: 2022/12/30 16:23:07 by wismith          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class MutantStack : public std::stack <T>
 			std::cout << "Default Constructor" << std::endl;
 		}
 		
-		MutantStack(MutantStack &m)
+		MutantStack(MutantStack &m) : std::stack<T>()
 		{
 			std::cout << "Copy Constructor" << std::endl;
 			if (this != &m)
